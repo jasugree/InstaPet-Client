@@ -1,24 +1,35 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
-import Login from "./components/Login";
-import Register from "./components/Register";
+import Auth from "./auth/Auth"
 import {
 	BrowserRouter as Router,
-	Switch,
 	Route
   } from "react-router-dom";
 
 function App() {
+
+	const [sessionToken, setSessionToken] = useState('');
+
+	useEffect(() => {
+		if(localStorage.getItem('token')){
+			setSessionToken(localStorage.getItem('token'))
+		}
+	}, [])
+
+	const updateToken =(newToken) => {
+		localStorage.setItem('token', newToken);
+		setSessionToken(newToken);
+		console.log(sessionToken);
+	}
+
 	return (
 		<div className="App">
 			<h1>Hello InstaPet</h1>
 			<Router>
-       			<Switch>
-         			<Route exact path = "/"><Login/></Route>
-         			<Route path = "/register"><Register/></Route>
-       			</Switch>
-   			</Router>
+			<Route exact path = "/"><Auth updateToken={updateToken}/></Route>
+			</Router>
+         			
 		</div>
 	);
 }
