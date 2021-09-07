@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
-import Auth from "./auth/Auth"
+import Login from './auth/Login'
+import Register from './auth/Register';
 import {
 	BrowserRouter as Router,
 	Route
@@ -20,14 +21,16 @@ function App() {
 	const updateToken =(newToken) => {
 		localStorage.setItem('token', newToken);
 		setSessionToken(newToken);
-		console.log(sessionToken);
+		console.log("This is the session token ====>" + sessionToken);
 	}
 
 	return (
 		<div className="App">
 			<h1>Hello InstaPet</h1>
 			<Router>
-			<Route exact path = "/"><Auth updateToken={updateToken}/></Route>
+			<Route exact path = "/"><Login updateToken={updateToken}/></Route>
+			<Route exact path = "/register"><Register updateToken={updateToken}/></Route>
+
 			</Router>
          			
 		</div>
