@@ -1,13 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
-import Login from './auth/Login'
-import Register from './auth/Register';
-import {
-	BrowserRouter as Router,
-	Route
-  } from "react-router-dom";
-import Sitebar from "./navbar/Navbar";
 import PostIndex from "./posts/PostIndex";
 import Auth from "./auth/Auth";
 

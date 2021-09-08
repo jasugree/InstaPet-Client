@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {Container, Row, Col} from 'reactstrap';
 import Sitebar from '../navbar/Navbar';
+import Uploading from './Uploading';
 
 
 const PostIndex = (props) => {
@@ -26,6 +27,7 @@ const PostIndex = (props) => {
     return (
         <div>
             <Sitebar clickLogout={props.clearToken}/>
+            <Uploading/>
             Hello, PostIndex.
             
         </div>
