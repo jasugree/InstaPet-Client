@@ -14,7 +14,7 @@ const Register = (props) => {
         console.log('hey there brother')
         fetch('http://localhost:3001/user/create', { 
             method: 'POST',
-            body: JSON.stringify({user: {email: email, password: password}}),
+            body: JSON.stringify({user: {firstName: firstName, lastName: lastName, email: email, password: password}}),
             headers: new Headers({
                 'Content-Type':'application/json'
             })

@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
-import Auth from "./auth/Auth"
+import Login from './auth/Login'
+import Register from './auth/Register';
 import {
 	BrowserRouter as Router,
 	Route
   } from "react-router-dom";
+import Sitebar from "./navbar/Navbar";
+import PostIndex from "./posts/PostIndex";
+import Auth from "./auth/Auth";
 
 function App() {
 
@@ -20,16 +24,23 @@ function App() {
 	const updateToken =(newToken) => {
 		localStorage.setItem('token', newToken);
 		setSessionToken(newToken);
-		console.log(sessionToken);
+		console.log("This is the session token ====>" + sessionToken);
 	}
+
+const clearToken = () => {
+	localStorage.clear();
+	setSessionToken('');
+}
+
+const protectedViews = () => {
+	return (sessionToken === localStorage.getItem('token') ? <PostIndex clearToken={clearToken} token={sessionToken}/>
+	: <Auth updateToken={updateToken}/>)
+}
 
 	return (
 		<div className="App">
-			<h1>Hello InstaPet</h1>
-			<Router>
-			<Route exact path = "/"><Auth updateToken={updateToken}/></Route>
-			</Router>
-         			
+			{/* <Sitebar clickLogout={clearToken}/> */}
+			{protectedViews()}		
 		</div>
 	);
 }

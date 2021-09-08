@@ -1,21 +1,22 @@
 import React from 'react';
-import Login from './Login';
-import Register from './Register';
 import {
 	BrowserRouter as Router,
-	Switch,
 	Route
   } from "react-router-dom";
+  import Login from './Login';
+import Register from './Register';
+
 
 const Auth = (props) => {
-    return ( 
+
+    return (
+        <div>
         <Router>
-        <Switch>
-          <Route exact path = "/"><Login updateToken={props.updateToken}/></Route>
-          <Route path = "/register"><Register updateToken={props.updateToken}/></Route>
-        </Switch>
-    </Router>
-     );
+			<Route exact path = "/"><Login updateToken={props.updateToken}/></Route>
+			<Route exact path = "/register"><Register updateToken={props.updateToken}/></Route>
+			</Router>
+            </div>
+    )
 }
- 
+
 export default Auth;
