@@ -7,6 +7,9 @@ import {
 	BrowserRouter as Router,
 	Route
   } from "react-router-dom";
+import Sitebar from "./navbar/Navbar";
+import PostIndex from "./posts/PostIndex";
+import Auth from "./auth/Auth";
 
 function App() {
 
@@ -24,15 +27,20 @@ function App() {
 		console.log("This is the session token ====>" + sessionToken);
 	}
 
+const clearToken = () => {
+	localStorage.clear();
+	setSessionToken('');
+}
+
+const protectedViews = () => {
+	return (sessionToken === localStorage.getItem('token') ? <PostIndex clearToken={clearToken} token={sessionToken}/>
+	: <Auth updateToken={updateToken}/>)
+}
+
 	return (
 		<div className="App">
-			<h1>Hello InstaPet</h1>
-			<Router>
-			<Route exact path = "/"><Login updateToken={updateToken}/></Route>
-			<Route exact path = "/register"><Register updateToken={updateToken}/></Route>
-
-			</Router>
-         			
+			{/* <Sitebar clickLogout={clearToken}/> */}
+			{protectedViews()}		
 		</div>
 	);
 }
