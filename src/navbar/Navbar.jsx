@@ -23,17 +23,14 @@ const Sitebar = (props) => {
   //     props.setSessionToken('');
   //     console.log('hello')
   // }
-
   return (
     <Navbar color="faded" light expand="md">
       <NavbarBrand href="/">InstaPet</NavbarBrand>
       <NavbarToggler onClick={toggle} />
       <Collapse isOpen={isOpen} navbar>
-        <Nav classNAme="ml-auto" navbar>
+        <Nav className="ml-auto" navbar>
           <NavItem>
-            <a href="/blue-badge-client/InstaPet-Client/src/posts/PostCreate.jsx">
-              <Button onClick={props.postCreate}>Create Post</Button>
-            </a>
+            <PostCreate token={props.token} />
             <Button onClick={props.clickLogout}>Logout</Button>
           </NavItem>
         </Nav>

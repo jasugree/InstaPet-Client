@@ -9,32 +9,30 @@ import {
   ModalBody,
   ModalHeader,
 } from "reactstrap";
+import Uploading from "./Uploading";
 
 const PostCreate = (props) => {
   const [image, setImage] = useState("");
   const [description, setDescription] = useState("");
   const [likes, setLikes] = useState("");
   const [category, setCategory] = useState("");
-  const [error, setError] = useState("");
   const [modal, setModal] = useState(false);
 
   const toggle = () => setModal(!modal);
-
-  useEffect(() => {
-    setError("");
-  }, [image]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Testing, testing. 1, 2, 3.");
 
-    fetch("https://localhost:3001/create", {
+    fetch("http://localhost:3001/post/create", {
       method: "POST",
       body: JSON.stringify({
-        image: image,
-        description: description,
-        likes: likes,
-        category: category,
+        post: {
+          image,
+          description,
+          likes,
+          category,
+        },
       }),
       headers: new Headers({
         "Content-Type": "application/json",
@@ -46,9 +44,8 @@ const PostCreate = (props) => {
         console.log(logData);
         setImage("");
         setDescription("");
-        setLikes("");
         setCategory("");
-        // props.fetchPostEntry();
+        toggle();
       })
       .catch((error) => {
         console.log("Error", error);
@@ -57,18 +54,15 @@ const PostCreate = (props) => {
 
   return (
     <div>
-      <Modal isOpen={modal} toggle={toggle}>
-        {/* <Modal isOpen={true}> */}
-        <ModalHeader toggle={toggle}>Post Your Pet</ModalHeader>
+      <Button color="danger" onClick={toggle}>
+        Create Post
+      </Button>
+      <Modal isOpen={modal}>
+        <ModalHeader toggle={toggle}>Share Your Pet</ModalHeader>
         <ModalBody>
           <Form onSubmit={handleSubmit}>
             <FormGroup>
-              <Label htmlFor="image">Photo</Label>
-              <Input
-                name="image"
-                value={image}
-                onChange={(e) => setImage(e.target.value)}
-              />
+              <Uploading setImage={setImage} image={image} />
             </FormGroup>
             <FormGroup>
               <Label htmlFor="description">Description</Label>
@@ -79,7 +73,7 @@ const PostCreate = (props) => {
               />
             </FormGroup>
             <FormGroup>
-              <Label htmlFor="likes" />
+              <Label htmlFor="likes">Likes</Label>
               <Input
                 name="likes"
                 value={likes}
@@ -87,7 +81,7 @@ const PostCreate = (props) => {
               />
             </FormGroup>
             <FormGroup>
-              <Label htmlFor="category" />
+              <Label htmlFor="category">Category</Label>
               <Input
                 name="category"
                 value={category}
