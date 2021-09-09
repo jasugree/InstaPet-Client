@@ -17,12 +17,6 @@ const Sitebar = (props) => {
         setIsOpen(newIsOpen);
     }
 
-    // const clearToken = () => {
-    //     localStorage.clear();
-    //     props.setSessionToken('');
-    //     console.log('hello')
-    // }
-
     return (
         <Navbar color="faded" light expand="md">
             <NavbarBrand href="/">InstaPet</NavbarBrand>
