@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import styled from "styled-components";
+import "../App.css";
 import {
   Navbar,
   NavbarBrand,
@@ -9,6 +11,7 @@ import {
   Button,
 } from "reactstrap";
 import PostCreate from "../posts/PostCreate";
+import CategorySearch from "../category/CategorySearch";
 
 const Sitebar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,6 +20,12 @@ const Sitebar = (props) => {
     let newIsOpen = !isOpen;
     setIsOpen(newIsOpen);
   };
+
+  const SearchContainer = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  `;
 
   // const clearToken = () => {
   //     localStorage.clear();
@@ -31,6 +40,9 @@ const Sitebar = (props) => {
         <Nav className="ml-auto" navbar>
           <NavItem>
             <PostCreate token={props.token} />
+            <SearchContainer>
+              <CategorySearch />
+            </SearchContainer>
             <Button onClick={props.clickLogout}>Logout</Button>
           </NavItem>
         </Nav>
