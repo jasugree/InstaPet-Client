@@ -10,6 +10,7 @@ import {
 import Sitebar from "./navbar/Navbar";
 import PostIndex from "./posts/PostIndex";
 import Auth from "./auth/Auth";
+import LikeButton from "./posts/LikeButton";
 
 function App() {
 
@@ -40,7 +41,8 @@ const protectedViews = () => {
 	return (
 		<div className="App">
 			{/* <Sitebar clickLogout={clearToken}/> */}
-			{protectedViews()}		
+			{protectedViews()}	
+			
 		</div>
 	);
 }

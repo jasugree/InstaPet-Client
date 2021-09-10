@@ -25,6 +25,7 @@ const Login = (props) => {
     return ( 
         <div className="login-register">
             <h2>This is the Login</h2>
+            
             <Form  onSubmit={handleSubmit}>
                 <FormGroup>
                     <Label htmlFor="email">Email</Label>

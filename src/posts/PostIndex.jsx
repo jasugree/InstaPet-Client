@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {Container, Row, Col} from 'reactstrap';
 import Sitebar from '../navbar/Navbar';
+import LikeButton from './LikeButton';
 
 
 const PostIndex = (props) => {
@@ -27,6 +28,7 @@ const PostIndex = (props) => {
         <div>
             <Sitebar clickLogout={props.clearToken}/>
             Hello, PostIndex.
+            <LikeButton />
             
         </div>
     )

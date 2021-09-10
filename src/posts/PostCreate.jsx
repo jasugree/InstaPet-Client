@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {Button, Form, FormGroup, Label, Input} from 'reactstrap';
+import LikeButton from './LikeButton';
 
 
 const PostCreate = () => {
@@ -13,6 +14,7 @@ const PostCreate = () => {
     return (
         <div>
             Post Create Component
+            <LikeButton />
         </div>
     )
 }
