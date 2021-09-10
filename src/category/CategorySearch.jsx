@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import "../App.css";
+import { CgSearch } from "react-icons/cg";
+import { VscChromeClose } from "react-icons/vsc";
+import { motion } from "framer-motion";
+import { useClickOutside } from "react-click-outside-hook";
 
-const CategorySearchContainer = styled.div`
+const CategorySearchContainer = styled(motion.div)`
   width: 15rem;
-  height: 1.75rem;
+  height: 2.5rem;
   display: flex;
   flex-direction: row;
   background-color: #fff;
@@ -47,11 +51,63 @@ const SearchInput = styled.input`
   }
 `;
 
+const SearchIcon = styled.span`
+  color: #bebebe;
+  font-size: 23px;
+  margin-right: 10px;
+  vertical-align: middle;
+  margin-bottom: 4px;
+`;
+
+const CloseIcon = styled.span`
+  color: #bebebe;
+  font-size: 16px;
+  vertical-align: middle;
+  margin-bottom: 3px;
+  transition: all 200ms ease-in-out;
+
+  &:hover {
+    color: #dfdfdf;
+  }
+`;
+
+const containerVariants = {
+  expanded: {
+    height: "18em",
+  },
+  collapsed: {
+    height: "2.5em",
+  },
+};
+
 const CategorySearch = (props) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [ref, isClickedOutside] = useClickOutside();
+
+  const expandContainer = () => {
+    setIsExpanded(true);
+  };
+
+  const collapseContainer = () => {
+    setIsExpanded(false);
+  };
+
   return (
-    <CategorySearchContainer>
+    <CategorySearchContainer
+      animate={isExpanded ? "expanded" : "collapsed"}
+      variants={containerVariants}
+    >
       <SearchInputContainer>
-        <SearchInput placeholder="Search by Category"></SearchInput>
+        <SearchIcon>
+          <CgSearch />
+        </SearchIcon>
+        <SearchInput
+          placeholder="Search by Category"
+          onFocus={expandContainer}
+        />
+        <CloseIcon>
+          <VscChromeClose />
+        </CloseIcon>
       </SearchInputContainer>
     </CategorySearchContainer>
   );
