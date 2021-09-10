@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import "../App.css";
 import { CgSearch } from "react-icons/cg";
 import { VscChromeClose } from "react-icons/vsc";
 import { motion } from "framer-motion";
+import { useRef } from "react";
 import { useClickOutside } from "react-click-outside-hook";
 
 const CategorySearchContainer = styled(motion.div)`
@@ -14,8 +15,10 @@ const CategorySearchContainer = styled(motion.div)`
   background-color: #fff;
   border-radius: 6px;
   box-shadow: 0px 2px 12px 3px rgba(0, 0, 0, 0.25);
-  justify-content: center;
-  overflow: hidden;
+  ${
+    "" /* justify-content: center;
+  overflow: hidden; */
+  }
 `;
 
 const SearchInputContainer = styled.div`
@@ -59,12 +62,13 @@ const SearchIcon = styled.span`
   margin-bottom: 4px;
 `;
 
-const CloseIcon = styled.span`
+const CloseIcon = styled(motion.span)`
   color: #bebebe;
   font-size: 16px;
   vertical-align: middle;
   margin-bottom: 3px;
   transition: all 200ms ease-in-out;
+  cursor: pointer;
 
   &:hover {
     color: #dfdfdf;
@@ -80,9 +84,12 @@ const containerVariants = {
   },
 };
 
+const containerAnimation = { type: "spring", damping: 22, stiffness: 150 };
+
 const CategorySearch = (props) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [ref, isClickedOutside] = useClickOutside();
+  const inputRef = useRef();
 
   const expandContainer = () => {
     setIsExpanded(true);
@@ -90,12 +97,19 @@ const CategorySearch = (props) => {
 
   const collapseContainer = () => {
     setIsExpanded(false);
+    if (inputRef.current) inputRef.current.value = "";
   };
+
+  useEffect(() => {
+    if (isClickedOutside) collapseContainer();
+  }, [isClickedOutside]);
 
   return (
     <CategorySearchContainer
       animate={isExpanded ? "expanded" : "collapsed"}
       variants={containerVariants}
+      transition={containerAnimation}
+      ref={ref}
     >
       <SearchInputContainer>
         <SearchIcon>
@@ -104,8 +118,9 @@ const CategorySearch = (props) => {
         <SearchInput
           placeholder="Search by Category"
           onFocus={expandContainer}
+          ref={inputRef}
         />
-        <CloseIcon>
+        <CloseIcon onClick={collapseContainer}>
           <VscChromeClose />
         </CloseIcon>
       </SearchInputContainer>
