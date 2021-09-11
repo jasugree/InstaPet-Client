@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { InputGroup, InputGroupText, InputGroupAddon, Input } from "reactstrap";
 import "../App.css";
 
-const CategorySearch = (props) => {
+const Search = (props) => {
   const [category, setCategory] = useState("");
 
   const handleSubmit = (e) => {
@@ -25,7 +25,7 @@ const CategorySearch = (props) => {
       .then((logData) => {
         console.log(logData);
         setCategory("");
-        CategorySearch();
+        Search();
       })
       .catch((error) => {
         console.log("Error", error);
@@ -43,3 +43,5 @@ const CategorySearch = (props) => {
     </InputGroup>
   );
 };
+
+export default Search;
