@@ -40,10 +40,8 @@ const Sitebar = (props) => {
         <Nav className="ml-auto" navbar>
           <NavItem>
             <PostCreate token={props.token} />
-            <SearchContainer>
-              <CategorySearch />
-            </SearchContainer>
             <Button onClick={props.clickLogout}>Logout</Button>
+            <CategorySearch token={props.token} />
           </NavItem>
         </Nav>
       </Collapse>
