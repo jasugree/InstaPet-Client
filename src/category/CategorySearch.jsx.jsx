@@ -3,7 +3,7 @@ import { InputGroup, InputGroupText, InputGroupAddon, Input } from "reactstrap";
 import "../App.css";
 
 const CategorySearch = (props) => {
-  const [category, setCategory] = useState([]);
+  const [category, setCategory] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,20 +31,15 @@ const CategorySearch = (props) => {
         console.log("Error", error);
       });
   };
-
   return (
-    <div>
-      <InputGroup
-        className=".z-depth-1-half mx-auto"
-        style={{ display: "flex", borderRadius: 6, width: 300 }}
-      >
-        <Input placeholder="Hashtag search" />
-        <InputGroupAddon addonType="append">
-          <InputGroupText onSubmit={handleSubmit}>Search</InputGroupText>
-        </InputGroupAddon>
-      </InputGroup>
-    </div>
+    <InputGroup
+      className=".z-depth-1-half mx-auto"
+      style={{ display: "flex", borderRadius: 6, width: 300 }}
+    >
+      <Input placeholder="Hashtag search" />
+      <InputGroupAddon addonType="append">
+        <InputGroupText>Search</InputGroupText>
+      </InputGroupAddon>
+    </InputGroup>
   );
 };
-
-export default CategorySearch;
