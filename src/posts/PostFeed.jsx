@@ -6,6 +6,11 @@ const PostFeed = (props) => {
     const postMapper = () => {
         console.log('ignore');
         return props.posts.slice(0).reverse().map((post, index) =>{
+
+            const createdAt = new Date(post.createdAt);
+            const createdDate = createdAt.toLocaleDateString('en-US');
+            const createdTime = createdAt.toLocaleTimeString('en-US')
+            
             return(
                 <div>
                 <tr key={index}>
@@ -21,7 +26,7 @@ const PostFeed = (props) => {
                 <div className="postDetails">
                     <div className="timeLike">
                         <div className="time">
-                            {post.createdAt}
+                            {createdDate} at {createdTime}
                         </div>
                         <div className="likes">
                             {post.likes}
