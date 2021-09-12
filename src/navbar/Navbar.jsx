@@ -10,7 +10,7 @@ import {
   Button,
 } from "reactstrap";
 import PostCreate from "../posts/PostCreate";
-import Search from "../category/Search";
+// import Search from "../category/Search";
 
 const Sitebar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,7 +34,7 @@ const Sitebar = (props) => {
           <NavItem>
             <PostCreate token={props.token} />
             <Button onClick={props.clickLogout}>Logout</Button>
-            <Search token={props.token} />
+            {/* <Search token={props.token} /> */}
           </NavItem>
         </Nav>
       </Collapse>
