@@ -1,12 +1,20 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import {
+  Button,
+  Form,
+  FormGroup,
+  Label,
+  Input
+} from "reactstrap";
+import UploadingProfile from "../posts/UploadingProfile";
 
 const Register = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [profileImage, setprofileImage] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,6 +24,7 @@ const Register = (props) => {
       method: "POST",
       body: JSON.stringify({
         user: {
+          profileImage: profileImage,
           firstName: firstName,
           lastName: lastName,
           email: email,
@@ -36,6 +45,9 @@ const Register = (props) => {
     <div className="login-register">
       <h2>This is the Register</h2>
       <Form onSubmit={handleSubmit}>
+        <FormGroup>
+              <UploadingProfile setprofileImage={setprofileImage} profileImage={profileImage} />
+        </FormGroup>
         <FormGroup>
           <Label htmlFor="firstName">First Name</Label>
           <Input

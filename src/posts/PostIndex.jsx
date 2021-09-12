@@ -5,8 +5,8 @@ import PostFeed from "./PostFeed";
 import PostCreate from "./PostCreate";
 
 const PostIndex = (props) => {
-  const [posts, setPosts] = useState([]);
-  const [users, setUsers] = useState([]);
+  const [posts, setPosts] = useState(null);
+  const [users, setUsers] = useState(null);
 
   const fetchPosts = () => {
     fetch("http://localhost:3001/post", {
@@ -44,10 +44,11 @@ const PostIndex = (props) => {
   useEffect(() => {
     fetchUsers();
   }, []);
-
+console.log(posts)
+console.log(users)
   return (
     <div>
-      <Sitebar token={props.token} clickLogout={props.clearToken} />
+      <Sitebar token={props.token} fetchPosts={fetchPosts} clickLogout={props.clearToken} />
       <Container>
         <Row>
           <Col>
