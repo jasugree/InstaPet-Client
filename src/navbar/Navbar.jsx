@@ -9,6 +9,8 @@ import {
   Button,
 } from "reactstrap";
 import PostCreate from "../posts/PostCreate";
+import PostUpdate from "../posts/PostUpdate";
+
 
 const Sitebar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,6 +33,7 @@ const Sitebar = (props) => {
         <Nav className="ml-auto" navbar>
           <NavItem>
             <PostCreate token={props.token} />
+            <PostUpdate token={props.token} />
             <Button onClick={props.clickLogout}>Logout</Button>
           </NavItem>
         </Nav>

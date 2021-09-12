@@ -12,39 +12,39 @@ import {
  import Uploading from './Uploading';
 
 const PostUpdate = (props) => {
-    const [editImage, setEditImage] = useState(props.postToUpdate);
-    const [editDesc, setEditDesc] = useState(props.postToUpdate);
-    const [editLikes, setEditLikes] = useState(props.postToUpdate);
-    const [editCat, setEditCat] = useState(props.postToUpdate);
+    const [image, setImage] = useState("");
+    const [description, setDescription] = useState("");
+    const [likes, setLikes] = useState("");
+    const [category, setCategory] = useState("");
     const [modal, setModal] = useState(false);
 
     const toggle = () => setModal(!modal);
 
-    const postUpdate = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         console.log("Test, test");
     
-        fetch(`http://localhost:3001/post/${props.postUpdate.id}`, {
-          method: "PUT",
+        fetch("http://localhost:3001/post/delete", {
+          method: "DELETE",
           body: JSON.stringify({
             post: {
-              image:editImage,
-              description:editDesc,
-              likes:editLikes,
-              category:editCat,
+              image,
+              description,
+              likes,
+              category,
             },
           }),
           headers: new Headers({
             "Content-Type": "application/json",
-            'Authorization': props.token,
+            Authorization: props.token,
           }),
         })
           .then((res) => res.json())
           .then((logData) => {
             console.log(logData);
-            setEditImage("");
-            setEditDesc("");
-            setEditCat("");
+            setImage("");
+            setDescription("");
+            setCategory("");
             
           })
           .catch((error) => {
@@ -54,40 +54,40 @@ const PostUpdate = (props) => {
     return (
         <div>
         <Button color="danger" onClick={toggle}>
-        Update Your Post
+        Delete Your Post
       </Button>
       <Modal isOpen={modal}>
         <ModalHeader toggle={toggle}>Update Your Post</ModalHeader>
         <ModalBody>
-          <Form onSubmit={postUpdate}>
+          <Form onSubmit={handleSubmit}>
             <FormGroup>
-              <Uploading setEditImage={setEditImage} editImage={editImage} />
+              <Uploading setImage={setImage} image={image} />
             </FormGroup>
             <FormGroup>
               <Label htmlFor="description">Description</Label>
               <Input
                 name="description"
-                value={editDesc}
-                onChange={(e) => setEditDesc(e.target.value)}
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
               />
             </FormGroup>
             <FormGroup>
               <Label htmlFor="likes">Likes</Label>
               <Input
                 name="likes"
-                value={editLikes}
-                onChange={(e) => setEditLikes(e.target.value)}
+                value={likes}
+                onChange={(e) => setLikes(e.target.value)}
               />
             </FormGroup>
             <FormGroup>
               <Label htmlFor="category">Category</Label>
               <Input
                 name="category"
-                value={editCat}
-                onChange={(e) => setEditCat(e.target.value)}
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
               />
             </FormGroup>
-            <Button type="post">Update</Button>
+            <Button type="post"></Button>
           </Form>
         </ModalBody>
       </Modal>

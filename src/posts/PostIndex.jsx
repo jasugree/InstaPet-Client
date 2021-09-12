@@ -3,10 +3,14 @@ import { Container, Row, Col } from "reactstrap";
 import Sitebar from "../navbar/Navbar";
 import PostFeed from "./PostFeed";
 import PostCreate from "./PostCreate";
+import PostUpdate from "./PostUpdate";
 
 const PostIndex = (props) => {
   const [posts, setPosts] = useState([]);
   const [users, setUsers] = useState([]);
+  const [updateActive, setUpdateActive] = useState(false);
+  const [postToUpdate, setPostToUpdate] = useState({})
+  
 
   const fetchPosts = () => {
     fetch("http://localhost:3001/post", {
@@ -25,6 +29,19 @@ const PostIndex = (props) => {
   useEffect(() => {
     fetchPosts();
   }, []);
+
+  const editPostUpdate = (update) => {
+    setPostToUpdate(update);
+    console.log(update)
+  }
+
+  const updateOn = () => {
+    setUpdateActive(true);
+  }
+
+  const updateOff = () => {
+    setUpdateActive(false)
+  }
 
 
   const fetchUsers = () => {
@@ -51,7 +68,7 @@ const PostIndex = (props) => {
       <Container>
         <Row>
           <Col>
-            <PostFeed posts={posts} fetchUsers={fetchUsers} users={users} fetchPosts={fetchPosts} token={props.token}  />
+            <PostFeed posts={posts} editPostUpdate={editPostUpdate} updateOn={updateOn}  fetchUsers={fetchUsers} users={users} fetchPosts={fetchPosts} token={props.token}  />
           </Col>
         </Row>
       </Container>
