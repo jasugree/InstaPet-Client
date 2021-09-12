@@ -1,10 +1,5 @@
 .App {
   text-align: center;
-  background: linear-gradient(
-    -45deg,
-    rgba(0, 134, 195, 1) 33%,
-    rgba(115, 232, 255, 1) 100%
-  );
   height: 100vh;
 }
 
@@ -59,4 +54,52 @@ h3,
 h4 {
   font-family: "Quattrocento", serif;
   font-weight: 700;
+}
+img {
+  max-width: 100%;
+  width: 600px;
+}
+.postContainer {
+  background: white;
+  margin-bottom: 24px;
+  max-width: 600px;
+  border-radius: 3px;
+  border: 1px solid #dbdbdb;
+}
+
+.userHeader {
+  padding: 16px;
+}
+
+.postDetails {
+  padding: 16px;
+}
+
+.userProfilePic {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 100%;
+}
+
+.userName {
+  margin-left: 14px;
+  color: #0086c3;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+}
+
+html * {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}
+
+body {
+  background: #dbf9ff !important;
+}
+
+.navbar {
+  background: white;
+  margin-bottom: 35px;
+  box-shadow: rgba(17, 12, 46, 0.1) 0px 0px 10px 0px;
 }
