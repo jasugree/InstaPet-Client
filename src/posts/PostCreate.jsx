@@ -45,7 +45,7 @@ const PostCreate = (props) => {
         setImage("");
         setDescription("");
         setCategory("");
-        props.fetchPosts(); 
+        props.fetchPosts();
         toggle();
       })
       .catch((error) => {
@@ -70,6 +70,7 @@ const PostCreate = (props) => {
               <Input
                 name="description"
                 value={description}
+                required
                 onChange={(e) => setDescription(e.target.value)}
               />
             </FormGroup>
@@ -86,6 +87,7 @@ const PostCreate = (props) => {
               <Input
                 name="category"
                 value={category}
+                required
                 onChange={(e) => setCategory(e.target.value)}
               />
             </FormGroup>
