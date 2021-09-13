@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import {
+  Button,
+  Form,
+  FormGroup,
+  Label,
+  Input
+} from "reactstrap";
 import UploadingProfile from "../posts/UploadingProfile";
 
 const Register = (props) => {
@@ -8,7 +14,7 @@ const Register = (props) => {
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [profileImage, setprofileImage] = useState("");
+  const [profileImage, setprofileImage] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -40,10 +46,7 @@ const Register = (props) => {
       <h2>This is the Register</h2>
       <Form onSubmit={handleSubmit}>
         <FormGroup>
-          <UploadingProfile
-            setprofileImage={setprofileImage}
-            profileImage={profileImage}
-          />
+              <UploadingProfile setprofileImage={setprofileImage} profileImage={profileImage} />
         </FormGroup>
         <FormGroup>
           <Label htmlFor="firstName">First Name</Label>

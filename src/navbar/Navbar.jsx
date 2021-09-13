@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "../App.css";
 import {
   Navbar,
   NavbarBrand,
@@ -10,7 +9,7 @@ import {
   Button,
 } from "reactstrap";
 import PostCreate from "../posts/PostCreate";
-import BrandLogo from "../InstaPet-logo.svg";
+import BrandLogo from "../InstaPet-logo.svg"
 
 const Sitebar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,16 +26,13 @@ const Sitebar = (props) => {
   // }
   return (
     <Navbar color="faded" light expand="md">
-      <NavbarBrand href="/">
-        <img src={BrandLogo} alt="logo" style={{ width: 200 }} />
-      </NavbarBrand>
+      <NavbarBrand href="/"><img src={BrandLogo} alt="logo" style={{width: 200}} /></NavbarBrand>
       <NavbarToggler onClick={toggle} />
       <Collapse isOpen={isOpen} navbar>
         <Nav className="ml-auto" navbar>
           <NavItem>
             <PostCreate token={props.token} fetchPosts={props.fetchPosts} />
             <Button onClick={props.clickLogout}>Logout</Button>
-            {/* <Search token={props.token} /> */}
           </NavItem>
         </Nav>
       </Collapse>

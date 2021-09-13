@@ -45,7 +45,7 @@ const PostCreate = (props) => {
         setImage("");
         setDescription("");
         setCategory("");
-        props.fetchPosts();
+        props.fetchPosts(); 
         toggle();
       })
       .catch((error) => {
