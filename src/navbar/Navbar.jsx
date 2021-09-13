@@ -9,7 +9,7 @@ import {
   Button,
 } from "reactstrap";
 import PostCreate from "../posts/PostCreate";
-import Search from "../search/Search.jsx";
+import Search from "../search/Search";
 import BrandLogo from "../InstaPet-logo.svg";
 
 const Sitebar = (props) => {
