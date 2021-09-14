@@ -25,7 +25,7 @@ const PostFeed = (props) => {
                     <div className="postContainer" style={{textAlign: 'left'}}>
                         <div className="userHeader">
                             <img className="userProfilePic" src={post[1].profileImage} alt="user"/>
-                            <span className="userName">{post[1].firstName} {post[1].lastName}</span>
+                            <span className="userName">{post[1].userName}</span>
                         </div>
                         <div className="picture">
                             <img src={post[0].image} alt="post image" />
@@ -40,7 +40,7 @@ const PostFeed = (props) => {
                         </div>
                     </div>
                     <div className="description">
-                        {post[0].description}
+                    <span className="userName-description">{post[1].userName}</span> {post[0].description}
                     </div>
                     <div className="category">
                         {post[0].category}

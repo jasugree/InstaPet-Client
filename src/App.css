@@ -7,6 +7,9 @@
 	height: 40vmin;
 	pointer-events: none;
 }
+p {
+	color: #263238;
+}
 
 @media (prefers-reduced-motion: no-preference) {
 	.App-logo {
@@ -39,13 +42,54 @@
 }
 
 /* JAKE'S BASE STYLING */
+.wrapper {
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 .login-register {
+	width: 500px;
 	max-width: 500px;
 	margin: auto;
 	padding: 2em;
 	text-align: left;
 	background: white;
 	box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+	border-radius: 5px;
+}
+
+.auth-logo {
+	text-align: center;
+	display: block;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+	width: 100%;
+	margin-bottom: 10% !important;
+}
+
+#auth-login {
+	background-color: #0086c3 !important;
+	color: white;
+	width: 100%;
+	border: none;
+	padding: 0.5rem;
+	border-radius: 100px;
+	font-family: "Poppins", sans-serif;
+	text-transform: uppercase;
+	font-weight: 500;
+	letter-spacing: 0.1rem;
+	font-size: 1.25rem;
+	transition: background-color 0.25s ease;
+	margin-bottom: 10%;
+}
+#auth-login:hover {
+	background-color: #29b6f6 !important;
+	transition: background-color 0.25s ease;
+}
+.auth-toggle {
+	text-align: center;
 }
 
 h1,
@@ -88,6 +132,11 @@ img {
 	font-weight: 500;
 	font-family: "Poppins", sans-serif;
 }
+.userName-description {
+	color: #0086c3;
+	font-weight: 500;
+	font-family: "Poppins", sans-serif;
+}
 
 html * {
 	font-family: "Poppins", sans-serif;
@@ -102,4 +151,92 @@ body {
 	background: white;
 	margin-bottom: 35px;
 	box-shadow: rgba(17, 12, 46, 0.1) 0px 0px 10px 0px;
+}
+
+.password-icon {
+	position: relative;
+	top: -30px;
+	left: 93%;
+	cursor: pointer;
+	color: #73e8ff;
+	transition: color 0.25s ease;
+}
+.password-icon:hover {
+	color: #29b6f6;
+	transition: color 0.25s ease;
+}
+.auth-toggle-link {
+	font-weight: 500;
+	color: #0086c3;
+}
+
+input {
+	border: solid #73e8ff 1px !important;
+	background-color: #73e8ff25 !important;
+}
+label {
+	color: #263238;
+}
+
+.register-intro {
+	text-align: center;
+	margin-bottom: 5%;
+}
+
+#profile-image-upload {
+	border: none !important;
+	background-color: white !important;
+}
+
+#profile-pic {
+	object-fit: cover;
+	border-radius: 100%;
+	width: 200px;
+	height: 200px;
+	text-align: center;
+	display: block;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+	margin-bottom: 5%;
+}
+
+#uploader {
+	text-align: center;
+	display: block;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+}
+
+label.custom-file-upload {
+	background-color: #0086c3 !important;
+	color: white;
+	width: 75%;
+	border: none;
+	padding: 0.5rem;
+	border-radius: 100px;
+	font-family: "Poppins", sans-serif;
+	text-transform: uppercase;
+	font-weight: 500;
+	letter-spacing: 0.1rem;
+	font-size: 1.25rem;
+	transition: background-color 0.25s ease;
+}
+
+label.custom-file-upload:hover {
+	background-color: #29b6f6 !important;
+	transition: background-color 0.25s ease;
+	cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+	.password-icon {
+		position: relative;
+		top: -30px;
+		left: 90%;
+		cursor: pointer;
+		color: #73e8ff;
+		transition: color 0.25s ease;
+	}
 }
