@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Container, FormGroup } from "reactstrap";
+import PlaceholderImage from "../placeholder-profile-pic.png"
 
 
 const UploadingProfile = (props) => {
     const [image, setImage] = useState("");
-  // const { setImage, image } = props;
+  const { setprofileImage} = props;
   const [loading, setLoading] = useState(false);
 
   const UploadImage = async (e) => {
@@ -24,26 +25,25 @@ const UploadingProfile = (props) => {
 
     console.log(File.secure_url);
     setImage(File.secure_url);
+    setprofileImage(File.secure_url);
     setLoading(false);
   };
 
   return (
     <div>
       <Container>
-        <h1>Upload Your Picture</h1>
-        <FormGroup>
-          <input
+        <img id="profile-pic" src={ image == "" ? (PlaceholderImage) :(image)} alt="" />
+        <FormGroup id="uploader">
+        <label for="profile-image-upload" class="custom-file-upload">
+          <input 
+            style={{display: "none"}}
+            id="profile-image-upload"
             type="file"
             name="file"
             placeholder="Upload Image Here"
-            onChange={UploadImage}
-          />
-          <br />
-          {loading ? (
-            <h3>Loading...</h3>
-          ) : (
-            <img src={image} style={{ width: "300px" }} />
-          )}
+            onChange={UploadImage} required
+          />          Add your Photo
+          </label>
         </FormGroup>
       </Container>
     </div>
