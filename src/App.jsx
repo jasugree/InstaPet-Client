@@ -4,6 +4,7 @@ import "./App.css";
 import PostIndex from "./posts/PostIndex";
 import Auth from "./auth/Auth";
 
+
 function App() {
   const [sessionToken, setSessionToken] = useState("");
 
