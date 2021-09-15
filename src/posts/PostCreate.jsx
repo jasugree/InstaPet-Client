@@ -35,7 +35,7 @@ import {
 const PostCreate = (props) => {
   const [image, setImage] = useState("");
   const [description, setDescription] = useState("");
-  const [likes, setLikes] = useState("");
+  const [likes, setLikes] = useState(0);
   const [category, setCategory] = useState("");
   const [modal, setModal] = useState(false);
 
@@ -66,7 +66,10 @@ const PostCreate = (props) => {
         setImage("");
         setDescription("");
         setCategory("");
+        setLikes(likes);
+
         props.fetchPosts();
+        props.fetchMine();
         toggle();
       })
       .catch((error) => {
@@ -93,14 +96,6 @@ const PostCreate = (props) => {
                 value={description}
                 required
                 onChange={(e) => setDescription(e.target.value)}
-              />
-            </FormGroup>
-            <FormGroup>
-              <Label htmlFor="likes">Likes</Label>
-              <Input
-                name="likes"
-                value={likes}
-                onChange={(e) => setLikes(e.target.value)}
               />
             </FormGroup>
             <FormGroup>

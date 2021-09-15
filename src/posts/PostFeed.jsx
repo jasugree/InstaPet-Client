@@ -1,8 +1,10 @@
-import React, { useReducer } from "react";
+import React from "react";
+import PostUpdate from "./PostUpdate";
 
 const PostFeed = (props) => {
   console.log(props.users);
   console.log(props.posts);
+  console.log(props.token);
 
   const joinArrays = (userArr, postArr) => {
     if (!userArr || !postArr) return;
@@ -23,7 +25,13 @@ const PostFeed = (props) => {
         const createdAt = new Date(post[0].createdAt);
         const createdDate = createdAt.toLocaleDateString("en-US");
         const createdTime = createdAt.toLocaleTimeString("en-US");
-
+        const checkData = () => {
+          return post.length > 0 ? (
+            <PostUpdate post={post[0]} token={props.token} />
+          ) : (
+            "loading data"
+          );
+        };
         return (
           <div
             style={{
@@ -31,9 +39,8 @@ const PostFeed = (props) => {
               justifyContent: "center",
               alignItems: "center",
             }}
-            key={index}
           >
-            <tr>
+            <tr key={index}>
               <div className="postContainer" style={{ textAlign: "left" }}>
                 <div className="userHeader">
                   <img
@@ -41,9 +48,7 @@ const PostFeed = (props) => {
                     src={post[1].profileImage}
                     alt="user"
                   />
-                  <span className="userName">
-                    {post[1].firstName} {post[1].lastName}
-                  </span>
+                  <span className="userName">{post[1].userName}</span>
                 </div>
                 <div className="picture">
                   <img src={post[0].image} alt="post image" />
@@ -55,7 +60,18 @@ const PostFeed = (props) => {
                     </div>
                     <div className="likes">{post[0].likes}</div>
                   </div>
-                  <div className="description">{post[0].description}</div>
+                  <div className="description">
+                    <span className="userName-description">
+                      {post[1].userName}
+                    </span>{" "}
+                    {post[0].description}
+                  </div>
+                  <PostUpdate
+                    post={post[0]}
+                    token={props.token}
+                    fetchPosts={props.fetchPosts}
+                  />
+                  {/* {checkData} */}
                   <div className="category">{post[0].category}</div>
                 </div>
               </div>

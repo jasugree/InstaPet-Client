@@ -1,12 +1,31 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col } from "reactstrap";
 import Sitebar from "../navbar/Navbar";
-import PostFeed from "./PostFeed";
-import PostCreate from "./PostCreate";
 
 const PostIndex = (props) => {
+  // const [updateActive, setUpdateActive] = useState(false);
+  const [postToUpdate, setPostToUpdate] = useState({});
+
   const [posts, setPosts] = useState(null);
   const [users, setUsers] = useState(null);
+  const [mine, setMine] = useState(null);
+
+  const fetchMine = () => {
+    fetch("http://localhost:3001/post/mine", {
+      method: "GET",
+      headers: new Headers({
+        "Content-Type": "application/json",
+        Authorization: props.token,
+      }),
+    })
+      .then((res) => res.json())
+      .then((feedData) => {
+        setMine(feedData);
+      });
+  };
+
+  useEffect(() => {
+    fetchMine();
+  }, []);
 
   const fetchPosts = () => {
     fetch("http://localhost:3001/post", {
@@ -43,29 +62,31 @@ const PostIndex = (props) => {
   useEffect(() => {
     fetchUsers();
   }, []);
+
   console.log(posts);
   console.log(users);
   return (
     <div>
-      <Sitebar
-        token={props.token}
-        fetchPosts={fetchPosts}
-        clickLogout={props.clearToken}
-        setPosts={setPosts}
-      />
+      {/* <Sitebar  token={props.token} fetchPosts={fetchPosts} clickLogout={props.clearToken} />
       <Container>
         <Row>
           <Col>
-            <PostFeed
-              posts={posts}
-              fetchUsers={fetchUsers}
-              users={users}
-              fetchPosts={fetchPosts}
-              token={props.token}
-            />
+            <PostFeed postToUpdate={postToUpdate} posts={posts} fetchUsers={fetchUsers} users={users} fetchPosts={fetchPosts} token={props.token}  />
+>>>>>>> bdd594e4f008a9b4f294bafdd91d79dd2223a2f9
           </Col>
         </Row>
-      </Container>
+      </Container> */}
+
+      <Sitebar
+        token={props.token}
+        fetchPosts={fetchPosts}
+        setPosts={setPosts}
+        posts={posts}
+        users={users}
+        fetchMine={fetchMine}
+        mine={mine}
+        clickLogout={props.clearToken}
+      />
     </div>
   );
 };
