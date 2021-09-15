@@ -3,7 +3,7 @@ import { Container, Row, Col } from "reactstrap";
 import Sitebar from "../navbar/Navbar";
 import PostFeed from "./PostFeed";
 import PostCreate from "./PostCreate";
-
+//This is for merge
 const PostIndex = (props) => {
   const [posts, setPosts] = useState(null);
   const [users, setUsers] = useState(null);
