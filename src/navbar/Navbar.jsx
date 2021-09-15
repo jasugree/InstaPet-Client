@@ -22,7 +22,7 @@ import PostFeed from "../posts/PostFeed";
 
 const Sitebar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-  console.log(props);
+console.log(props);
   const toggle = () => {
     let newIsOpen = !isOpen;
     setIsOpen(newIsOpen);
@@ -35,20 +35,23 @@ const Sitebar = (props) => {
       <NavbarBrand href="/"><img src={BrandLogo} alt="logo" style={{width: 200}} /></NavbarBrand>
       <NavbarToggler onClick={toggle} />
       <Collapse isOpen={isOpen} navbar>
+
       <Nav className="ml-auto" navbar>
         <NavItem>
-            <PostCreate token={props.token} />
+            <PostCreate fetchMine={props.fetchMine} fetchPosts={props.fetchPosts} token={props.token} />
             <UserFeed token={props.token} />
             <div className="sidebar-list-styling">
 
             <ul className="view-list">
                <li><Link to="/">Home</Link></li>
-               <li><Link to="/post/mine">Profile</Link></li>
                </ul>
+               <Link to="/post/mine"><Button onClick={props.fetchPosts}> Profile </Button></Link>
+
             </div>
          
 
-            <Button onClick={props.clickLogout}>Logout</Button>
+            <Link to="/"><Button onClick={props.clickLogout}>Logout</Button></Link>
+
           </NavItem>
         </Nav>
       </Collapse>

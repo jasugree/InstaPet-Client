@@ -2,10 +2,16 @@ import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "reactstrap";
 import Sitebar from "../navbar/Navbar";
 import PostFeed from "./PostFeed";
+import PostUpdate from "./PostUpdate";
 import PostCreate from "./PostCreate";
 import UserFeed from "./UserFeed";
 
 const PostIndex = (props) => {
+
+  // const [updateActive, setUpdateActive] = useState(false);
+  const [postToUpdate, setPostToUpdate] = useState({})
+  
+
   const [posts, setPosts] = useState(null);
   const [users, setUsers] = useState(null);
   const [mine, setMine] = useState(null);
@@ -30,6 +36,7 @@ const PostIndex = (props) => {
 
 
 
+
   const fetchPosts = () => {
     fetch("http://localhost:3001/post", {
       method: "GET",
@@ -43,10 +50,12 @@ const PostIndex = (props) => {
         setPosts(feedData);
       });
   };
-
+  
   useEffect(() => {
     fetchPosts();
   }, []);
+
+  
 
 
   const fetchUsers = () => {
@@ -66,10 +75,21 @@ const PostIndex = (props) => {
   useEffect(() => {
     fetchUsers();
   }, []);
+
+
 console.log(posts)
 console.log(users)
   return (
     <div>
+      {/* <Sitebar  token={props.token} fetchPosts={fetchPosts} clickLogout={props.clearToken} />
+      <Container>
+        <Row>
+          <Col>
+            <PostFeed postToUpdate={postToUpdate} posts={posts} fetchUsers={fetchUsers} users={users} fetchPosts={fetchPosts} token={props.token}  />
+          </Col>
+        </Row>
+      </Container> */}
+
       <Sitebar token={props.token} fetchPosts={fetchPosts} posts={posts} users={users} fetchMine={fetchMine} mine={mine} clickLogout={props.clearToken} />
     
     </div>

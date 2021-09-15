@@ -1,8 +1,10 @@
 import React, { useReducer } from 'react';
+import PostUpdate from './PostUpdate';
 
 const PostFeed = (props) => {
     console.log(props.users);
     console.log(props.posts);
+    console.log(props.token);
 
     const joinArrays = (userArr, postArr) => {
         if(!userArr || !postArr) return
@@ -18,8 +20,10 @@ const PostFeed = (props) => {
             const createdAt = new Date(post[0].createdAt);
             const createdDate = createdAt.toLocaleDateString('en-US');
             const createdTime = createdAt.toLocaleTimeString('en-US')
-            
+            const checkData = () => {
+                return post.length > 0 ? <PostUpdate post={post[0]} token={props.token} /> : 'loading data'}
             return(
+
                 <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}> 
                 <tr key={index}>
                     <div className="postContainer" style={{textAlign: 'left'}}>
@@ -42,6 +46,8 @@ const PostFeed = (props) => {
                     <div className="description">
                     <span className="userName-description">{post[1].userName}</span> {post[0].description}
                     </div>
+                    <PostUpdate post={post[0]} token={props.token} fetchPosts={props.fetchPosts} />
+                    {/* {checkData} */}
                     <div className="category">
                         {post[0].category}
                     </div>
