@@ -1,105 +1,105 @@
 .App {
-	text-align: center;
-	height: 100vh;
+  text-align: center;
+  height: 100vh;
 }
 
 .App-logo {
-	height: 40vmin;
-	pointer-events: none;
+  height: 40vmin;
+  pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-	.App-logo {
-		animation: App-logo-spin infinite 20s linear;
-	}
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
 }
 
 .App-header {
-	background-color: #282c34;
-	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	font-size: calc(10px + 2vmin);
-	color: white;
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }
 
 .App-link {
-	color: #61dafb;
+  color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-	from {
-		transform: rotate(0deg);
-	}
-	to {
-		transform: rotate(360deg);
-	}
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* JAKE'S BASE STYLING */
 .login-register {
-	max-width: 500px;
-	margin: auto;
-	padding: 2em;
-	text-align: left;
-	background: white;
-	box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+  max-width: 500px;
+  margin: auto;
+  padding: 2em;
+  text-align: left;
+  background: white;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
 }
 
 h1,
 h2,
 h3,
 h4 {
-	font-family: "Quattrocento", serif;
-	font-weight: 700;
+  font-family: "Quattrocento", serif;
+  font-weight: 700;
 }
 img {
-	max-width: 100%;
-	width: 600px;
+  max-width: 100%;
+  width: 600px;
 }
 .postContainer {
-	background: white;
-	margin-bottom: 24px;
-	max-width: 600px;
-	border-radius: 3px;
-	border: 1px solid #dbdbdb;
+  background: white;
+  margin-bottom: 24px;
+  max-width: 600px;
+  border-radius: 3px;
+  border: 1px solid #dbdbdb;
 }
 
 .userHeader {
-	padding: 16px;
+  padding: 16px;
 }
 
 .postDetails {
-	padding: 16px;
+  padding: 16px;
 }
 
 .userProfilePic {
-	width: 50px;
-	height: 50px;
-	object-fit: cover;
-	border-radius: 100%;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 100%;
 }
 
 .userName {
-	margin-left: 14px;
-	color: #0086c3;
-	font-weight: 500;
-	font-family: "Poppins", sans-serif;
+  margin-left: 14px;
+  color: #0086c3;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
 }
 
 html * {
-	font-family: "Poppins", sans-serif;
-	font-weight: 400;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
 }
 
 body {
-	background: #dbf9ff !important;
+  background: #dbf9ff !important;
 }
 
 .navbar {
-	background: white;
-	margin-bottom: 35px;
-	box-shadow: rgba(17, 12, 46, 0.1) 0px 0px 10px 0px;
+  background: white;
+  margin-bottom: 35px;
+  box-shadow: rgba(17, 12, 46, 0.1) 0px 0px 10px 0px;
 }

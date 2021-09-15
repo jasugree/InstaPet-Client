@@ -9,7 +9,7 @@ import {
   Button,
 } from "reactstrap";
 import PostCreate from "../posts/PostCreate";
-import Search from "../search/Search";
+import Search from "../posts/Search";
 import BrandLogo from "../InstaPet-logo.svg";
 
 const Sitebar = (props) => {
@@ -35,7 +35,11 @@ const Sitebar = (props) => {
         <Nav className="ml-auto" navbar>
           <NavItem>
             <PostCreate token={props.token} fetchPosts={props.fetchPosts} />
-            <Search token={props.token} />
+            <Search
+              token={props.token}
+              fetchPosts={props.fetchPosts}
+              setPosts={props.setPosts}
+            />
             <Button onClick={props.clickLogout}>Logout</Button>
           </NavItem>
         </Nav>

@@ -26,7 +26,6 @@ const PostIndex = (props) => {
     fetchPosts();
   }, []);
 
-
   const fetchUsers = () => {
     fetch("http://localhost:3001/user", {
       method: "GET",
@@ -44,15 +43,26 @@ const PostIndex = (props) => {
   useEffect(() => {
     fetchUsers();
   }, []);
-console.log(posts)
-console.log(users)
+  console.log(posts);
+  console.log(users);
   return (
     <div>
-      <Sitebar token={props.token} fetchPosts={fetchPosts} clickLogout={props.clearToken} />
+      <Sitebar
+        token={props.token}
+        fetchPosts={fetchPosts}
+        clickLogout={props.clearToken}
+        setPosts={setPosts}
+      />
       <Container>
         <Row>
           <Col>
-            <PostFeed posts={posts} fetchUsers={fetchUsers} users={users} fetchPosts={fetchPosts} token={props.token}  />
+            <PostFeed
+              posts={posts}
+              fetchUsers={fetchUsers}
+              users={users}
+              fetchPosts={fetchPosts}
+              token={props.token}
+            />
           </Col>
         </Row>
       </Container>
