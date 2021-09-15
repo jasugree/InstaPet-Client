@@ -55,7 +55,7 @@ const PostFeed = (props) => {
                 </div>
                 </tr>
                 </div>
-            )
+        )
         })
     }
 

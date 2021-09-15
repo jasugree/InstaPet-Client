@@ -8,6 +8,7 @@ import {
   Input
 } from "reactstrap";
 import UploadingProfile from "../posts/UploadingProfile";
+import BrandLogo from "../InstaPet-logo.svg"
 
 const Register = (props) => {
   const [email, setEmail] = useState("");
@@ -15,6 +16,7 @@ const Register = (props) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [profileImage, setprofileImage] = useState('');
+  const [userName, setUserName] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,6 +26,7 @@ const Register = (props) => {
       method: "POST",
       body: JSON.stringify({
         user: {
+          userName: userName,
           profileImage: profileImage,
           firstName: firstName,
           lastName: lastName,
@@ -42,49 +45,60 @@ const Register = (props) => {
   };
 
   return (
+    <div className="wrapper">
     <div className="login-register">
-      <h2>This is the Register</h2>
+      <img src={BrandLogo} alt="logo" class="auth-logo" style={{width: 300, margin: "auto"}} />
+      <p className="register-intro">Sign up to see photos from your friends and their pets.</p>
       <Form onSubmit={handleSubmit}>
         <FormGroup>
               <UploadingProfile setprofileImage={setprofileImage} profileImage={profileImage} />
         </FormGroup>
         <FormGroup>
-          <Label htmlFor="firstName">First Name</Label>
+          <Input
+            onChange={(e) => setUserName(e.target.value)}
+            name="firstName"
+            placeholder="Username"
+            value={userName} required
+          />
+        </FormGroup>
+        <FormGroup>
           <Input
             onChange={(e) => setFirstName(e.target.value)}
             name="firstName"
-            value={firstName}
+            placeholder="First Name"
+            value={firstName} required
           />
         </FormGroup>
         <FormGroup>
-          <Label htmlFor="lastName">Last Name</Label>
           <Input
             onChange={(e) => setLastName(e.target.value)}
             name="lastName"
-            value={lastName}
+            placeholder="Last Name"
+            value={lastName} required
           />
         </FormGroup>
         <FormGroup>
-          <Label htmlFor="email">Email</Label>
           <Input
+            type="email"
             onChange={(e) => setEmail(e.target.value)}
             name="email"
-            value={email}
+            placeholder="Email"
+            value={email} required
           />
         </FormGroup>
         <FormGroup>
-          <Label htmlFor="password">Password</Label>
           <Input
             onChange={(e) => setPassword(e.target.value)}
             name="password"
-            value={password}
+            placeholder="Password"
+            value={password} required
           />
         </FormGroup>
-        <Button type="submit">Signup</Button>
+        <Button id="auth-login" type="submit" style={{marginTop: "5%"}}>Signup</Button>
       </Form>
-      <Link to="/" variant="body2">
-        Already have an account ? Sign in here
-      </Link>
+      <p className="auth-toggle">Already have an account? <Link  className="auth-toggle-link" to="/" variant="body2">Sign in here</Link>
+      </p>
+    </div>
     </div>
   );
 };
