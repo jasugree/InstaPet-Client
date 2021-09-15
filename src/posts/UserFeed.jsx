@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react';
+import PostDelete from './PostDelete';
 import PostUpdate from './PostUpdate';
 
 const UserFeed = (props) => {
@@ -48,6 +49,7 @@ const UserFeed = (props) => {
                     <div className="category">
                         {post[0].category}
                     </div>
+                    <PostDelete />
                 </div>
                 </div>
                 </tr>

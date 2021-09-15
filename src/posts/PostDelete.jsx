@@ -14,7 +14,7 @@ import {
     const toggle = () => setModal(!modal);
 
     const deletePost = (posts) => {    
-    fetch(`http://localhost:3001/post/${posts.id}`, {
+    fetch(`http://localhost:3001/post/delete/${props.post.id}`, {
           method: "DELETE",
           headers: new Headers({
             "Content-Type": "application/json",
@@ -22,6 +22,7 @@ import {
           })
         })
           .then(() => props.fetchPosts());
+          toggle()
     }
     
     return (
