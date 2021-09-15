@@ -47,68 +47,70 @@ const Search = (props) => {
   };
 
   return (
-    <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-      <DropdownToggle caret>Search by Category</DropdownToggle>
-      <DropdownMenu>
-        <DropdownItem onClick={() => handleFetch(AWESOME_AARDVARK)}>
-          {AWESOME_AARDVARK}
-        </DropdownItem>
-        <DropdownItem onClick={() => handleFetch(COOL_CAT)}>
-          {COOL_CAT}
-        </DropdownItem>
-        <DropdownItem onClick={() => handleFetch(DARLING_DOGGO)}>
-          {DARLING_DOGGO}
-        </DropdownItem>
-        <DropdownItem onClick={() => handleFetch(DELIGHTFUL_DOLPHIN)}>
-          {DELIGHTFUL_DOLPHIN}
-        </DropdownItem>
-        <DropdownItem onClick={() => handleFetch(FANTASTIC_FROG)}>
-          {FANTASTIC_FROG}
-        </DropdownItem>
-        <DropdownItem onClick={() => handleFetch(FIESTY_FOX)}>
-          {FIESTY_FOX}
-        </DropdownItem>
-        <DropdownItem onClick={() => handleFetch(HAPPY_HEDGEHOG)}>
-          {HAPPY_HEDGEHOG}
-        </DropdownItem>
-        <DropdownItem onClick={() => handleFetch(LOVABLE_LLAMA)}>
-          {LOVABLE_LLAMA}
-        </DropdownItem>
-        <DropdownItem onClick={() => handleFetch(NIFTY_NARWHAL)}>
-          {NIFTY_NARWHAL}
-        </DropdownItem>
-        <DropdownItem onClick={() => handleFetch(PERFECT_PARROT)}>
-          {PERFECT_PARROT}
-        </DropdownItem>
-        <DropdownItem onClick={() => handleFetch(PRETTY_PENGUIN)}>
-          {PRETTY_PENGUIN}
-        </DropdownItem>
-        <DropdownItem onClick={() => handleFetch(PURPOSEFUL_PORPOISE)}>
-          {PURPOSEFUL_PORPOISE}
-        </DropdownItem>
-        <DropdownItem onClick={() => handleFetch(ROCKIN_RABBIT)}>
-          {ROCKIN_RABBIT}
-        </DropdownItem>
-        <DropdownItem onClick={() => handleFetch(SASSY_SLOTH)}>
-          {SASSY_SLOTH}
-        </DropdownItem>
-        <DropdownItem onClick={() => handleFetch(SILLY_SHARK)}>
-          {SILLY_SHARK}
-        </DropdownItem>
-        <DropdownItem onClick={() => handleFetch(SLIPPERY_SNAKE)}>
-          {SLIPPERY_SNAKE}
-        </DropdownItem>
-        <DropdownItem onClick={() => handleFetch(SUPER_SEAL)}>
-          {SUPER_SEAL}
-        </DropdownItem>
-        <DropdownItem onClick={() => handleFetch(TUBULAR_TURTLE)}>
-          {TUBULAR_TURTLE}
-        </DropdownItem>
-        <DropdownItem onClick={() => handleFetch(ZESTY_ZEBRA)}>
-          {ZESTY_ZEBRA}
-        </DropdownItem>
-      </DropdownMenu>
-    </Dropdown>
+    <div className="search-dropdown .z-depth-1-half">
+      <Dropdown isOpen={dropdownOpen} toggle={toggle}>
+        <DropdownToggle caret>Search by Category</DropdownToggle>
+        <DropdownMenu>
+          <DropdownItem onClick={() => handleFetch(AWESOME_AARDVARK)}>
+            {AWESOME_AARDVARK}
+          </DropdownItem>
+          <DropdownItem onClick={() => handleFetch(COOL_CAT)}>
+            {COOL_CAT}
+          </DropdownItem>
+          <DropdownItem onClick={() => handleFetch(DARLING_DOGGO)}>
+            {DARLING_DOGGO}
+          </DropdownItem>
+          <DropdownItem onClick={() => handleFetch(DELIGHTFUL_DOLPHIN)}>
+            {DELIGHTFUL_DOLPHIN}
+          </DropdownItem>
+          <DropdownItem onClick={() => handleFetch(FANTASTIC_FROG)}>
+            {FANTASTIC_FROG}
+          </DropdownItem>
+          <DropdownItem onClick={() => handleFetch(FIESTY_FOX)}>
+            {FIESTY_FOX}
+          </DropdownItem>
+          <DropdownItem onClick={() => handleFetch(HAPPY_HEDGEHOG)}>
+            {HAPPY_HEDGEHOG}
+          </DropdownItem>
+          <DropdownItem onClick={() => handleFetch(LOVABLE_LLAMA)}>
+            {LOVABLE_LLAMA}
+          </DropdownItem>
+          <DropdownItem onClick={() => handleFetch(NIFTY_NARWHAL)}>
+            {NIFTY_NARWHAL}
+          </DropdownItem>
+          <DropdownItem onClick={() => handleFetch(PERFECT_PARROT)}>
+            {PERFECT_PARROT}
+          </DropdownItem>
+          <DropdownItem onClick={() => handleFetch(PRETTY_PENGUIN)}>
+            {PRETTY_PENGUIN}
+          </DropdownItem>
+          <DropdownItem onClick={() => handleFetch(PURPOSEFUL_PORPOISE)}>
+            {PURPOSEFUL_PORPOISE}
+          </DropdownItem>
+          <DropdownItem onClick={() => handleFetch(ROCKIN_RABBIT)}>
+            {ROCKIN_RABBIT}
+          </DropdownItem>
+          <DropdownItem onClick={() => handleFetch(SASSY_SLOTH)}>
+            {SASSY_SLOTH}
+          </DropdownItem>
+          <DropdownItem onClick={() => handleFetch(SILLY_SHARK)}>
+            {SILLY_SHARK}
+          </DropdownItem>
+          <DropdownItem onClick={() => handleFetch(SLIPPERY_SNAKE)}>
+            {SLIPPERY_SNAKE}
+          </DropdownItem>
+          <DropdownItem onClick={() => handleFetch(SUPER_SEAL)}>
+            {SUPER_SEAL}
+          </DropdownItem>
+          <DropdownItem onClick={() => handleFetch(TUBULAR_TURTLE)}>
+            {TUBULAR_TURTLE}
+          </DropdownItem>
+          <DropdownItem onClick={() => handleFetch(ZESTY_ZEBRA)}>
+            {ZESTY_ZEBRA}
+          </DropdownItem>
+        </DropdownMenu>
+      </Dropdown>
+    </div>
   );
 };
 
