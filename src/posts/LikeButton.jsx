@@ -1,9 +1,10 @@
 import { Button } from 'reactstrap';
 import { useState } from 'react';
 
+
 const LikeButton = () => {
     const [liked, setLiked] = useState(null);
-    console.log('pic likes')
+    // console.log('pic likes')
     console.log({liked})
     
 

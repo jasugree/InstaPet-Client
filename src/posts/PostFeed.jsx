@@ -1,50 +1,137 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useState, useEffect } from 'react';
+import {Button, Modal, ModalHeader, Row, Col, Container} from 'reactstrap';
+import LikeButton from './LikeButton';
+import PostDelete from './PostDelete';
+import PostUpdate from './PostUpdate';
 
 const PostFeed = (props) => {
     console.log(props.users);
     console.log(props.posts);
-    const postMapper = () => {
-        console.log('ignore');
-        return props.posts.slice(0).reverse().map((post, index) =>{
 
-            const createdAt = new Date(post.createdAt);
+    const [posts, setPosts] = useState([]);
+    
+    const [updateActive, setUpdateActive] = useState(false);
+    const [postToUpdate, setPostToUpdate] = useState({})
+
+    const [modal, setModal] = useState(false);
+    const toggle = () => setModal(!modal);
+
+    const fetchUsers = () => {
+        fetch("http://localhost:3001/user", {
+          method: "GET",
+          headers: new Headers({
+            "Content-Type": "application/json",
+            Authorization: props.token,
+          }),
+        })
+          .then((res) => res.json())
+          .then((UserData) => {
+            props.setUsers(UserData);
+          });
+      };
+    
+      useEffect(() => {
+        fetchUsers();
+      }, []);
+
+      const fetchPosts = () => {
+        fetch("http://localhost:3001/post", {
+          method: "GET",
+          headers: new Headers({
+            "Content-Type": "application/json",
+            Authorization: props.token,
+          }),
+        })
+          .then((res) => res.json())
+          .then((feedData) => {
+            setPosts(feedData);
+          });
+      };
+      
+      useEffect(() => {
+        fetchPosts();
+      }, []);
+
+    const PostUpdate = (posts) => {
+        setPostToUpdate(posts);
+        console.log(posts)
+      }
+    
+      const updateOn = () => {
+        setUpdateActive(true);
+      }
+    
+      const updateOff = () => {
+        setUpdateActive(false)
+      }
+
+      
+
+    const joinArrays = (userArr, postArr) => {
+        if(!userArr || !postArr) return
+        return postArr.map(post=>[post, ...userArr.filter(u=>u.id==post.owner)])
+      }
+
+      console.log(joinArrays(props.users, props.posts))
+
+    const postMapper = () => {
+        if(!props.users || !props.posts) return
+        return joinArrays(props.users, props.posts).slice(0).reverse().map((post, index) =>{
+
+            const createdAt = new Date(post[0].createdAt);
             const createdDate = createdAt.toLocaleDateString('en-US');
             const createdTime = createdAt.toLocaleTimeString('en-US')
+
+            
             
             return(
-                <div>
+                <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}> 
                 <tr key={index}>
                     <div className="postContainer" style={{textAlign: 'left'}}>
                         <div className="userHeader">
-                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="user" style={{width: 50}} />
-                            <span>trash</span>
+                            <img className="userProfilePic" src={post[1].profileImage} alt="user"/>
+                            <span className="userName">{post[1].firstName} {post[1].lastName}</span>
                         </div>
                         <div className="picture">
-                            <img src={post.image} alt="fox" style={{width: 200}} />
+                            <img src={post[0].image} alt="post image" />
                         </div>
-                    </div>
                 <div className="postDetails">
                     <div className="timeLike">
                         <div className="time">
                             {createdDate} at {createdTime}
                         </div>
                         <div className="likes">
-                            {post.likes}
+                            {post[0].likes}
                         </div>
                     </div>
                     <div className="description">
-                        {post.description}
+                        {post[0].description}
                     </div>
                     <div className="category">
-                        {post.category}
+                        {post[0].category}
                     </div>
+
+                    <div >
+                    {/* <Container>
+                        <Row>
+                            <Col>
+                                 <PostUpdate  token={props.token} fetchPosts={fetchPosts} posts={props.posts} fetchUsers={fetchUsers} users={props.users} />
+                            </Col>
+                        </Row>
+                    </Container> */}
+                    <PostUpdate />
+
+                    <LikeButton alignItems="right" />
+                    </div>
+                    
+                </div>
                 </div>
                 </tr>
                 </div>
             )
         })
     }
-
+    
 
 
     return ( 

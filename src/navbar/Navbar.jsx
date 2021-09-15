@@ -9,12 +9,11 @@ import {
   Button,
 } from "reactstrap";
 import PostCreate from "../posts/PostCreate";
-import PostUpdate from "../posts/PostUpdate";
-
+import BrandLogo from "../InstaPet-logo.svg"
 
 const Sitebar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-  console.log(props);
+console.log(props);
   const toggle = () => {
     let newIsOpen = !isOpen;
     setIsOpen(newIsOpen);
@@ -27,13 +26,14 @@ const Sitebar = (props) => {
   // }
   return (
     <Navbar color="faded" light expand="md">
-      <NavbarBrand href="/">InstaPet</NavbarBrand>
+      <NavbarBrand href="/"><img src={BrandLogo} alt="logo" style={{width: 200}} /></NavbarBrand>
       <NavbarToggler onClick={toggle} />
       <Collapse isOpen={isOpen} navbar>
         <Nav className="ml-auto" navbar>
           <NavItem>
-            <PostCreate token={props.token} />
-            <PostUpdate token={props.token} />
+            
+            <PostCreate token={props.token} fetchPosts={props.fetchPosts} />
+            
             <Button onClick={props.clickLogout}>Logout</Button>
           </NavItem>
         </Nav>

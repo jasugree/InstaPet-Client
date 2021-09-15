@@ -14,23 +14,24 @@ import {
 const PostUpdate = (props) => {
     const [editImage, setEditImage] = useState(props.postToUpdate);
     const [editDesc, setEditDesc] = useState(props.postToUpdate);
-    const [editLikes, setEditLikes] = useState(props.postToUpdate);
     const [editCat, setEditCat] = useState(props.postToUpdate);
     const [modal, setModal] = useState(false);
 
     const toggle = () => setModal(!modal);
 
-    const postUpdate = (e) => {
+    console.log(props.postToUpdate.id)
+    console.log(props.posts.id)
+    console.log('hello!!')
+
+    const postUpdate = (e, post) => {
         e.preventDefault();
         console.log("Test, test");
     
-        fetch(`http://localhost:3001/post/${props.postUpdate.id}`, {
+        fetch(`http://localhost:3001/post/${props.postToUpdate.id}`, {
           method: "PUT",
           body: JSON.stringify({
             post: {
-              image:editImage,
               description:editDesc,
-              likes:editLikes,
               category:editCat,
             },
           }),
@@ -53,16 +54,14 @@ const PostUpdate = (props) => {
       };
     return (
         <div>
-        <Button color="danger" onClick={toggle}>
+        <Button color="danger" size='sm' onClick={toggle}>
         Update Your Post
       </Button>
       <Modal isOpen={modal}>
         <ModalHeader toggle={toggle}>Update Your Post</ModalHeader>
         <ModalBody>
           <Form onSubmit={postUpdate}>
-            <FormGroup>
-              <Uploading setEditImage={setEditImage} editImage={editImage} />
-            </FormGroup>
+            
             <FormGroup>
               <Label htmlFor="description">Description</Label>
               <Input
@@ -71,14 +70,7 @@ const PostUpdate = (props) => {
                 onChange={(e) => setEditDesc(e.target.value)}
               />
             </FormGroup>
-            <FormGroup>
-              <Label htmlFor="likes">Likes</Label>
-              <Input
-                name="likes"
-                value={editLikes}
-                onChange={(e) => setEditLikes(e.target.value)}
-              />
-            </FormGroup>
+            
             <FormGroup>
               <Label htmlFor="category">Category</Label>
               <Input
@@ -87,7 +79,7 @@ const PostUpdate = (props) => {
                 onChange={(e) => setEditCat(e.target.value)}
               />
             </FormGroup>
-            <Button type="post">Update</Button>
+            <Button type="submit">Update</Button>
           </Form>
         </ModalBody>
       </Modal>
