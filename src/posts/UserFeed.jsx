@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react';
+import PostUpdate from './PostUpdate';
 
 const UserFeed = (props) => {
     console.log(props.users);
@@ -43,6 +44,7 @@ const UserFeed = (props) => {
                     <div className="description">
                         {post[0].description}
                     </div>
+                    <PostUpdate post={post[0]} token={props.token} fetchPosts={props.fetchPosts} />
                     <div className="category">
                         {post[0].category}
                     </div>

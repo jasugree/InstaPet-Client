@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container, FormGroup } from "reactstrap";
 
 const Uploading = (props) => {
-  //   const [image, setImage] = useState("");
+    // const [image, setImage] = useState("");
   const { setImage, image } = props;
   const [loading, setLoading] = useState(false);
 
