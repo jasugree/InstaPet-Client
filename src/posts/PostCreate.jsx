@@ -46,6 +46,7 @@ const PostCreate = (props) => {
         setDescription("");
         setCategory("");
         props.fetchPosts(); 
+        props.fetchMine();
         toggle();
       })
       .catch((error) => {
