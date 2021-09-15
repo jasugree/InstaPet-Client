@@ -2,17 +2,23 @@ import React, {useEffect} from 'react';
 import PostDelete from './PostDelete';
 import PostUpdate from './PostUpdate';
 
+
 const UserFeed = (props) => {
-    console.log(props.users);
-    console.log(props.mine);
+  console.log(props.users);
+  console.log(props.mine);
 
+  const joinArrays = (userArr, postArr) => {
+    if (!userArr || !postArr) return;
+    return postArr.map((post) => [
+      post,
+      ...userArr.filter((u) => u.id == post.owner),
+    ]);
+  };
 
-    const joinArrays = (userArr, postArr) => {
-        if(!userArr || !postArr) return
-        return postArr.map(post=>[post, ...userArr.filter(u=>u.id==post.owner)])
-      }
+  console.log(joinArrays(props.users, props.posts));
 
-      console.log(joinArrays(props.users, props.posts))
+  
+
 
     const postMapper = () => {
         if(!props.users || !props.mine) return
@@ -50,23 +56,18 @@ const UserFeed = (props) => {
                         {post[0].category}
                     </div>
                     <PostDelete />
-                </div>
-                </div>
-                </tr>
-              
-                </div>
-        )
-        })
-    }
 
+                
+                
+                </div>
+              </div>
+            </tr>
+          </div>
+        );
+      });
+  };
 
+  return <div>{postMapper()}</div>;
+};
 
-    return ( 
-        <div>
-            {postMapper()}
-        </div>
-     );
-}
- 
-    
 export default UserFeed;

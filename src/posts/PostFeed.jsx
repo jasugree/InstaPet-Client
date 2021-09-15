@@ -1,5 +1,4 @@
 import React, { useReducer } from 'react';
-import PostDelete from './PostDelete';
 import PostUpdate from './PostUpdate';
 
 const PostFeed = (props) => {
@@ -21,7 +20,8 @@ const PostFeed = (props) => {
             const createdAt = new Date(post[0].createdAt);
             const createdDate = createdAt.toLocaleDateString('en-US');
             const createdTime = createdAt.toLocaleTimeString('en-US')
-            
+            const checkData = () => {
+                return post.length > 0 ? <PostUpdate post={post[0]} token={props.token} /> : 'loading data'}
             return(
 
                 <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}> 
@@ -47,7 +47,7 @@ const PostFeed = (props) => {
                     <span className="userName-description">{post[1].userName}</span> {post[0].description}
                     </div>
                     <PostUpdate post={post[0]} token={props.token} fetchPosts={props.fetchPosts} />
-                   <PostDelete post={post[0]} token={props.token} fetchPosts={props.fetchPosts}/>
+                    {/* {checkData} */}
                     <div className="category">
                         {post[0].category}
                     </div>
