@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Container, Row, Col } from "reactstrap";
 import {
   Navbar,
   NavbarBrand,
@@ -6,10 +7,18 @@ import {
   NavbarToggler,
   Nav,
   NavItem,
-  Button,
+  Button
 } from "reactstrap";
+import { BrowserRouter as
+    Router,
+    Route,
+    Link,
+    Switch
+} from 'react-router-dom';
 import PostCreate from "../posts/PostCreate";
 import BrandLogo from "../InstaPet-logo.svg"
+import UserFeed from "../posts/UserFeed";
+import PostFeed from "../posts/PostFeed";
 
 const Sitebar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,27 +26,49 @@ const Sitebar = (props) => {
   const toggle = () => {
     let newIsOpen = !isOpen;
     setIsOpen(newIsOpen);
-  };
+  }
 
-  // const clearToken = () => {
-  //     localStorage.clear();
-  //     props.setSessionToken('');
-  //     console.log('hello')
-  // }
+
   return (
-    <Navbar color="faded" light expand="md">
+      <Router>
+           <Navbar color="faded" light expand="md">
       <NavbarBrand href="/"><img src={BrandLogo} alt="logo" style={{width: 200}} /></NavbarBrand>
       <NavbarToggler onClick={toggle} />
       <Collapse isOpen={isOpen} navbar>
-        <Nav className="ml-auto" navbar>
-          <NavItem>
-            <PostCreate token={props.token} fetchPosts={props.fetchPosts} />
+      <Nav className="ml-auto" navbar>
+        <NavItem>
+            <PostCreate token={props.token} />
+            <UserFeed token={props.token} />
+            <div className="sidebar-list-styling">
+
+            <ul className="view-list">
+               <li><Link to="/">Home</Link></li>
+               <li><Link to="/post/mine">Profile</Link></li>
+               </ul>
+            </div>
+         
+
             <Button onClick={props.clickLogout}>Logout</Button>
           </NavItem>
         </Nav>
       </Collapse>
-    </Navbar>
+   </Navbar>
+
+   <Container>
+        <Row>
+          <Col>
+           <Switch>
+           <Route exact path="/"><PostFeed  posts={props.posts} fetchUsers={props.fetchUsers} users={props.users} fetchPosts={props.fetchPosts} token={props.token} /></Route>
+           <Route exact path="/post/mine"><UserFeed fetchMine={props.fetchMine} mine={props.mine} posts={props.posts} fetchUsers={props.fetchUsers} users={props.users} fetchPosts={props.fetchPosts} token={props.token} /></Route>
+           </Switch>
+          </Col>
+        </Row>
+      </Container>
+   
+ 
+   </Router>
   );
 };
+
 
 export default Sitebar;
