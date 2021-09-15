@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import { 
     Button,
     Form, 
@@ -12,27 +12,30 @@ import {
  import Uploading from './Uploading';
 
 const PostUpdate = (props) => {
-    const [editImage, setEditImage] = useState(props.postToUpdate);
-    const [editDesc, setEditDesc] = useState(props.postToUpdate);
-    const [editCat, setEditCat] = useState(props.postToUpdate);
+    const [editImage, setEditImage] = useState(props.post.image);
+    const [editDesc, setEditDesc] = useState(props.post.description);
+    const [editCat, setEditCat] = useState(props.post.category);
+    const [editLike, setEditLike] = useState(props.post.like)
     const [modal, setModal] = useState(false);
 
     const toggle = () => setModal(!modal);
 
-    console.log(props.postToUpdate.id)
-    console.log(props.posts.id)
+    
     console.log('hello!!')
+    console.log(props.post)
 
     const postUpdate = (e, post) => {
         e.preventDefault();
         console.log("Test, test");
     
-        fetch(`http://localhost:3001/post/${props.postToUpdate.id}`, {
+        fetch(`http://localhost:3001/post/update/${props.post.id}`, {
           method: "PUT",
           body: JSON.stringify({
             post: {
+              image:editImage,
               description:editDesc,
               category:editCat,
+              likes:editLike
             },
           }),
           headers: new Headers({
@@ -43,10 +46,12 @@ const PostUpdate = (props) => {
           .then((res) => res.json())
           .then((logData) => {
             console.log(logData);
-            setEditImage("");
             setEditDesc("");
             setEditCat("");
-            
+            setEditImage(editImage);
+            setEditLike(editLike)
+            toggle()
+            props.fetchPosts()
           })
           .catch((error) => {
             console.log("Error", error);

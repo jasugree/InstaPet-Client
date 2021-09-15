@@ -7,7 +7,7 @@ import PostUpdate from "./PostUpdate";
 const PostIndex = (props) => {
 
   // const [updateActive, setUpdateActive] = useState(false);
-  // const [postToUpdate, setPostToUpdate] = useState({})
+  const [postToUpdate, setPostToUpdate] = useState({})
   
 
   const [posts, setPosts] = useState(null);
@@ -58,8 +58,15 @@ console.log(posts)
 console.log(users)
   return (
     <div>
-      <Sitebar token={props.token} fetchPosts={fetchPosts} clickLogout={props.clearToken} />
-      
+      <Sitebar  token={props.token} fetchPosts={fetchPosts} clickLogout={props.clearToken} />
+      <Container>
+        <Row>
+          <Col>
+            <PostFeed postToUpdate={postToUpdate} posts={posts} fetchUsers={fetchUsers} users={users} fetchPosts={fetchPosts} token={props.token}  />
+          </Col>
+        </Row>
+      </Container>
+
     </div>
   );
 };
