@@ -13,8 +13,11 @@ import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
             'Authorization': props.token,
           })
         })
-          .then(() => props.fetchPosts());
-          toggle()
+          .then(() =>{ 
+          props.fetchPosts();
+          props.fetchMine();
+          toggle();
+          });
     }
     
     return (

@@ -1,5 +1,6 @@
 import React, { useReducer } from 'react';
 import PostUpdate from './PostUpdate';
+import PostDelete from './PostDelete'
 
 const PostFeed = (props) => {
     console.log(props.users);
@@ -14,6 +15,7 @@ const PostFeed = (props) => {
       console.log(joinArrays(props.users, props.posts))
 
     const postMapper = () => {
+        debugger
         if(!props.users || !props.posts) return
         return joinArrays(props.users, props.posts).slice(0).reverse().map((post, index) =>{
 
@@ -46,8 +48,8 @@ const PostFeed = (props) => {
                     <div className="description">
                     <span className="userName-description">{post[1].userName}</span> {post[0].description}
                     </div>
-                    <PostUpdate post={post[0]} token={props.token} fetchPosts={props.fetchPosts} />
-                    {/* {checkData} */}
+                    <PostUpdate post={post[0]} token={props.token} fetchPosts={props.fetchPosts} fetchMine={props.fetchMine} />
+                    <PostDelete post={post[0]} token={props.token} fetchPosts={props.fetchPosts} fetchMine={props.fetchMine} />
                     <div className="category">
                         {post[0].category}
                     </div>

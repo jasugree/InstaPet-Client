@@ -43,7 +43,7 @@ const PostIndex = (props) => {
 
   useEffect(() => {
     fetchPosts();
-  }, []);
+  }, [props.token]);
 
   const fetchUsers = () => {
     fetch("http://localhost:3001/user", {
@@ -61,6 +61,7 @@ const PostIndex = (props) => {
 
   useEffect(() => {
     fetchUsers();
+    debugger
   }, []);
 
   console.log(posts);

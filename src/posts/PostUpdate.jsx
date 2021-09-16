@@ -72,6 +72,8 @@ const PostUpdate = (props) => {
         setEditLike(editLike);
         toggle();
         props.fetchPosts();
+        props.fetchMine();
+        props.setPosts(logData);
       })
       .catch((error) => {
         console.log("Error", error);
