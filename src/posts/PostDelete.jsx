@@ -1,20 +1,12 @@
-import React, {useState} from 'react';
-import { 
-    Button,
-    Table,
-    Modal, 
-    ModalHeader,
-    ModalBody
- } from 'reactstrap';
-
- 
+import React, { useState } from "react";
+import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
 
  const PostDelete = (props) => {
     const [modal, setModal] = useState(false);
     const toggle = () => setModal(!modal);
 
     const deletePost = (posts) => {    
-    fetch(`http://localhost:3001/post/${posts.id}`, {
+    fetch(`http://localhost:3001/post/delete/${props.post.id}`, {
           method: "DELETE",
           headers: new Headers({
             "Content-Type": "application/json",
@@ -22,22 +14,22 @@ import {
           })
         })
           .then(() => props.fetchPosts());
+          toggle()
     }
     
     return (
         <div>
         <Button color="" size="sm" onClick={toggle}>
         Delete Your Post
-        </Button>
-        <Modal isOpen={modal}>
-        <ModalHeader toggle={toggle} >Delete Your Post</ModalHeader>
+      </Button>
+      <Modal isOpen={modal}>
+        <ModalHeader toggle={toggle}>Delete Your Post</ModalHeader>
         <ModalBody>
-            <Button onClick={deletePost}>Delete</Button>
+          <Button onClick={deletePost}>Delete</Button>
         </ModalBody>
-        </Modal>
-      
-        </div>
-    )
-}
+      </Modal>
+    </div>
+  );
+};
 
-export default PostDelete
+export default PostDelete;

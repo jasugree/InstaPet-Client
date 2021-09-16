@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Container, FormGroup } from "reactstrap";
 
 const Uploading = (props) => {
-    // const [image, setImage] = useState("");
   const { setImage, image } = props;
   const [loading, setLoading] = useState(false);
 
@@ -32,6 +31,7 @@ const Uploading = (props) => {
         <h1>Upload Your Picture</h1>
         <FormGroup>
           <input
+            required
             type="file"
             name="file"
             placeholder="Upload Image Here"

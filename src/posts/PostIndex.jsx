@@ -1,16 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col } from "reactstrap";
 import Sitebar from "../navbar/Navbar";
-import PostFeed from "./PostFeed";
-import PostUpdate from "./PostUpdate";
-import PostCreate from "./PostCreate";
-import UserFeed from "./UserFeed";
 
 const PostIndex = (props) => {
-
   // const [updateActive, setUpdateActive] = useState(false);
-  const [postToUpdate, setPostToUpdate] = useState({})
-  
+  const [postToUpdate, setPostToUpdate] = useState({});
 
   const [posts, setPosts] = useState(null);
   const [users, setUsers] = useState(null);
@@ -34,9 +27,6 @@ const PostIndex = (props) => {
     fetchMine();
   }, []);
 
-
-
-
   const fetchPosts = () => {
     fetch("http://localhost:3001/post", {
       method: "GET",
@@ -50,13 +40,10 @@ const PostIndex = (props) => {
         setPosts(feedData);
       });
   };
-  
+
   useEffect(() => {
     fetchPosts();
   }, []);
-
-  
-
 
   const fetchUsers = () => {
     fetch("http://localhost:3001/user", {
@@ -76,9 +63,8 @@ const PostIndex = (props) => {
     fetchUsers();
   }, []);
 
-
-console.log(posts)
-console.log(users)
+  console.log(posts);
+  console.log(users);
   return (
     <div>
       {/* <Sitebar  token={props.token} fetchPosts={fetchPosts} clickLogout={props.clearToken} />
@@ -86,12 +72,21 @@ console.log(users)
         <Row>
           <Col>
             <PostFeed postToUpdate={postToUpdate} posts={posts} fetchUsers={fetchUsers} users={users} fetchPosts={fetchPosts} token={props.token}  />
+>>>>>>> bdd594e4f008a9b4f294bafdd91d79dd2223a2f9
           </Col>
         </Row>
       </Container> */}
 
-      <Sitebar token={props.token} fetchPosts={fetchPosts} posts={posts} users={users} fetchMine={fetchMine} mine={mine} clickLogout={props.clearToken} />
-    
+      <Sitebar
+        token={props.token}
+        fetchPosts={fetchPosts}
+        setPosts={setPosts}
+        posts={posts}
+        users={users}
+        fetchMine={fetchMine}
+        mine={mine}
+        clickLogout={props.clearToken}
+      />
     </div>
   );
 };
