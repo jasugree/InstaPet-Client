@@ -43,7 +43,7 @@ const Sitebar = (props) => {
               <div className="sidebar-list-styling">
                 <ul className="view-list">
                   <li>
-                    <Link to="/">Home</Link>
+                    <Link to="/"><Button onClick={props.fetchPosts}>Home</Button></Link>
                   </li>
                 </ul>
                 <Link to="/post/mine">
@@ -54,6 +54,7 @@ const Sitebar = (props) => {
               <Search
                 token={props.token}
                 fetchPosts={props.fetchPosts}
+                fetchMine={props.fetchMine}
                 setPosts={props.setPosts}
               />
               <Link to="/">
@@ -68,13 +69,15 @@ const Sitebar = (props) => {
         <Row>
           <Col>
             <Switch>
-              <Route exact path="/">
+              <Route exact path="/home">
                 <PostFeed
+                  fetchMine={props.fetchMine}
                   posts={props.posts}
                   fetchUsers={props.fetchUsers}
                   users={props.users}
                   fetchPosts={props.fetchPosts}
                   token={props.token}
+                  setPosts={props.setPosts}
                 />
               </Route>
               <Route exact path="/post/mine">
@@ -86,6 +89,7 @@ const Sitebar = (props) => {
                   users={props.users}
                   fetchPosts={props.fetchPosts}
                   token={props.token}
+                  setPosts={props.setPosts}
                 />
               </Route>
             </Switch>
