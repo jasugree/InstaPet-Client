@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import PostDelete from './PostDelete';
 import PostUpdate from './PostUpdate';
+import {Modal} from "reactstrap";
 
 
 const UserFeed = (props) => {
@@ -51,11 +52,13 @@ const UserFeed = (props) => {
                     <div className="description">
                         {post[0].description}
                     </div>
+                    
                     <PostUpdate post={post[0]} token={props.token} fetchPosts={props.fetchPosts} />
                     <div className="category">
                         {post[0].category}
                     </div>
                     <PostDelete />
+                    
 
                 
                 

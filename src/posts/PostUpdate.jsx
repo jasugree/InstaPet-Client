@@ -8,6 +8,7 @@ import {
   Input,
   ModalBody,
   ModalHeader,
+  DropdownItem,
 } from "reactstrap";
 import {
   AWESOME_AARDVARK,
@@ -39,7 +40,7 @@ const PostUpdate = (props) => {
   const [editLike, setEditLike] = useState(props.post.like);
   const [modal, setModal] = useState(false);
 
-  const toggle = () => setModal(!modal);
+  const toggleModal = () => setModal(!modal);
 
   console.log("hello!!");
   console.log(props.post);
@@ -70,7 +71,7 @@ const PostUpdate = (props) => {
         setEditCat("");
         setEditImage(editImage);
         setEditLike(editLike);
-        toggle();
+        toggleModal();
         props.fetchPosts();
       })
       .catch((error) => {
@@ -79,11 +80,11 @@ const PostUpdate = (props) => {
   };
   return (
     <div>
-      <Button color="danger" size="sm" onClick={toggle}>
+      <DropdownItem color="" size="sm" onClick={console.log('hello modal')}>
         Update Your Post
-      </Button>
+      </DropdownItem>
       <Modal isOpen={modal}>
-        <ModalHeader toggle={toggle}>Update Your Post</ModalHeader>
+        <ModalHeader toggleModal={toggleModal}>Update Your Post</ModalHeader>
         <ModalBody>
           <Form onSubmit={postUpdate}>
             <FormGroup>
