@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
 import PostIndex from "./posts/PostIndex";
 import Auth from "./auth/Auth";
+import LikeButton from "./posts/LikeButton";
 
 
 function App() {
