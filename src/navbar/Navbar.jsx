@@ -19,6 +19,7 @@ import PostCreate from "../posts/PostCreate";
 import BrandLogo from "../InstaPet-logo.svg"
 import UserFeed from "../posts/UserFeed";
 import PostFeed from "../posts/PostFeed";
+import Search from "../posts/Search";
 
 
 const Sitebar = (props) => {
@@ -34,23 +35,25 @@ const Sitebar = (props) => {
 
   return (
       <Router>
-           <Navbar color="faded" light expand="md">
-      <NavbarBrand href="/"><img src={BrandLogo} alt="logo" style={{width: 200}} /></NavbarBrand>
-      <NavbarToggler onClick={toggle} />
-      <Collapse isOpen={isOpen} navbar>
-      <Nav className="ml-auto" navbar>
-        <NavItem>
-
-            <div className="navbar-buttons">
-            <UserFeed token={props.token} />
-            <PostCreate  fetchMine={props.fetchMine} fetchPosts={props.fetchPosts} token={props.token} />
-               <Link to="/"><Button style={{backgroundColor:"#ffffff"}}><i className="fas fa-home"></i></Button></Link>
-               <Link to="/post/mine"><Button className="UserFeed" onClick={props.fetchPosts}   style={{backgroundImage: `url(${profileImage})`}}></Button></Link>
-               <Link to="/"><Button onClick={props.clickLogout}  style={{backgroundColor:"#ffffff"}}><i className="fas fa-sign-out-alt"></i></Button></Link>
-
-            </div>
-         
-          </NavItem>
+        <Navbar fixed={"top"} color="faded" light expand="md">
+          <NavbarBrand href="/home"><img src={BrandLogo} alt="logo" style={{width: 200}} /></NavbarBrand>
+          <NavbarToggler onClick={toggle} />
+          <Collapse isOpen={isOpen} navbar>
+          <Nav className="ml-auto" navbar>
+            <NavItem>
+              <PostCreate  className="nav-button"  fetchMine={props.fetchMine} fetchPosts={props.fetchPosts} token={props.token} />
+            </NavItem>
+          </Nav>
+          <Nav className="ml-auto" navbar>
+            <NavItem className="nav-right">
+              <Link to="/home"><Button className="nav-button" style={{backgroundColor:"#ffffff"}}><i className="fas fa-home"></i></Button></Link>
+            </NavItem>
+            <NavItem className="nav-right">
+              <Link to="/"><Button className="nav-button" onClick={props.clickLogout}  style={{backgroundColor:"#ffffff"}}><i className="fas fa-sign-out-alt"></i></Button></Link>
+            </NavItem>
+            <NavItem className="nav-right">
+              <Link to="/post/mine"><Button className="UserFeed" onClick={props.fetchPosts}   style={{backgroundImage: `url(${profileImage})`}}></Button></Link>
+            </NavItem>
         </Nav>
       </Collapse>
    </Navbar>
@@ -58,8 +61,12 @@ const Sitebar = (props) => {
    <Container>
         <Row>
           <Col>
+          <div className="filter">
+          <Search style={{maxWidth: 200}} token={props.token} fetchPosts={props.fetchPosts} fetchMine={props.fetchMine} setPosts={props.setPosts}
+              />
+          </div>
            <Switch>
-           <Route exact path="/"><PostFeed  posts={props.posts} fetchUsers={props.fetchUsers} users={props.users} fetchPosts={props.fetchPosts} token={props.token} /></Route>
+           <Route exact path="/home"><PostFeed  posts={props.posts} fetchUsers={props.fetchUsers} users={props.users} fetchMine={props.fetchMine} fetchPosts={props.fetchPosts} token={props.token} /></Route>
            <Route exact path="/post/mine"><UserFeed fetchMine={props.fetchMine} mine={props.mine} posts={props.posts} fetchUsers={props.fetchUsers} users={props.users} fetchPosts={props.fetchPosts} token={props.token} /></Route>
            </Switch>
           </Col>

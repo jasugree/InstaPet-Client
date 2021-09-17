@@ -38,11 +38,10 @@ const PostUpdate = (props) => {
   const [editDesc, setEditDesc] = useState(props.post.description);
   const [editCat, setEditCat] = useState(props.post.category);
   const [editLike, setEditLike] = useState(props.post.like);
-  // const [modal, setModal] = useState(false);
- const {modal, setModal} = props
+  const [modal, setModal] = useState(props.modal);
+//  const {modal, setModal} = props
   const toggle = () => {
     setModal(!modal);
-    debugger
   }
   console.log("hello!!");
   console.log(props.post);
@@ -84,7 +83,9 @@ const PostUpdate = (props) => {
   };
   return (
     <div>
-
+        <Button style={{backgroundColor: "transparent", border: 0, fontSize: 24, padding: 0}} size="sm" onClick={toggle}>
+        <i class="far fa-edit"></i>
+        </Button>
       <Modal isOpen={modal}>
         <ModalHeader toggle={toggle}>Update Your Post</ModalHeader>
         <ModalBody>
