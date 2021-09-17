@@ -8,6 +8,7 @@ import {
   Input,
   ModalBody,
   ModalHeader,
+  DropdownItem,
 } from "reactstrap";
 import {
   AWESOME_AARDVARK,
@@ -37,10 +38,12 @@ const PostUpdate = (props) => {
   const [editDesc, setEditDesc] = useState(props.post.description);
   const [editCat, setEditCat] = useState(props.post.category);
   const [editLike, setEditLike] = useState(props.post.like);
-  const [modal, setModal] = useState(false);
-
-  const toggle = () => setModal(!modal);
-
+  // const [modal, setModal] = useState(false);
+ const {modal, setModal} = props
+  const toggle = () => {
+    setModal(!modal);
+    debugger
+  }
   console.log("hello!!");
   console.log(props.post);
 
@@ -81,9 +84,7 @@ const PostUpdate = (props) => {
   };
   return (
     <div>
-      <Button color="danger" size="sm" onClick={toggle}>
-        Update Your Post
-      </Button>
+
       <Modal isOpen={modal}>
         <ModalHeader toggle={toggle}>Update Your Post</ModalHeader>
         <ModalBody>
