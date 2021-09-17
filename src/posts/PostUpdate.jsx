@@ -38,10 +38,12 @@ const PostUpdate = (props) => {
   const [editDesc, setEditDesc] = useState(props.post.description);
   const [editCat, setEditCat] = useState(props.post.category);
   const [editLike, setEditLike] = useState(props.post.like);
-  const [modal, setModal] = useState(false);
-
-  const toggleModal = () => setModal(!modal);
-
+  // const [modal, setModal] = useState(false);
+ const {modal, setModal} = props
+  const toggle = () => {
+    setModal(!modal);
+    debugger
+  }
   console.log("hello!!");
   console.log(props.post);
 
@@ -71,7 +73,7 @@ const PostUpdate = (props) => {
         setEditCat("");
         setEditImage(editImage);
         setEditLike(editLike);
-        toggleModal();
+        toggle();
         props.fetchPosts();
         props.fetchMine();
         props.setPosts(logData);
@@ -82,11 +84,9 @@ const PostUpdate = (props) => {
   };
   return (
     <div>
-      <DropdownItem color="" size="sm" onClick={console.log('hello modal')}>
-        Update Your Post
-      </DropdownItem>
+
       <Modal isOpen={modal}>
-        <ModalHeader toggleModal={toggleModal}>Update Your Post</ModalHeader>
+        <ModalHeader toggle={toggle}>Update Your Post</ModalHeader>
         <ModalBody>
           <Form onSubmit={postUpdate}>
             <FormGroup>

@@ -11,6 +11,7 @@ const PostFeed = (props) => {
     console.log(props.token);
 
     const [dropdownOpen, setOpen] = useState(false);
+    const [showUpdateModal, setShowUpdateModal]= useState(false)
     const toggle = () => setOpen(!dropdownOpen);
 
     const joinArrays = (userArr, postArr) => {
@@ -62,12 +63,18 @@ const PostFeed = (props) => {
                     <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
                         <DropdownToggle> ... </DropdownToggle>
                     <DropdownMenu> 
-                     
-                    <PostUpdate post={post[0]} token={props.token} fetchPosts={props.fetchPosts} /> 
+                    <DropdownItem color="" size="sm" onClick={()=>{
+                        setShowUpdateModal(true)}}>
+        
+        Update Your Post
+      </DropdownItem>
+
+
                     
-                    <DropdownItem>
+
+                    {/* <DropdownItem>
                     <PostDelete post={post[0]} token={props.token} fetchPosts={props.fetchPosts} />
-                    </DropdownItem>
+                </DropdownItem> */}
                     </DropdownMenu>
                     </ButtonDropdown>
 
@@ -75,6 +82,8 @@ const PostFeed = (props) => {
                     <LikeButton/>
                     </div>
 
+                
+                <PostUpdate post={post[0]} token={props.token} fetchPosts={props.fetchPosts} modal={showUpdateModal} setModal={setShowUpdateModal} /> 
                     
                 </div>
                 </div>
