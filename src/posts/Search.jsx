@@ -47,9 +47,9 @@ const Search = (props) => {
   };
 
   return (
-    <div className="search-dropdown .z-depth-1-half">
+    <div className="search-dropdown">
       <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-        <DropdownToggle caret>Search by Category</DropdownToggle>
+        <DropdownToggle id="search-button" caret>Search by Category</DropdownToggle>
         <DropdownMenu>
           <DropdownItem onClick={() => handleFetch(AWESOME_AARDVARK)}>
             {AWESOME_AARDVARK}

@@ -7,14 +7,20 @@ import {
   NavbarToggler,
   Nav,
   NavItem,
-  Button,
+  Button
 } from "reactstrap";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter as
+    Router,
+    Route,
+    Link,
+    Switch
+} from 'react-router-dom';
 import PostCreate from "../posts/PostCreate";
-import Search from "../posts/Search";
-import BrandLogo from "../InstaPet-logo.svg";
+import BrandLogo from "../InstaPet-logo.svg"
 import UserFeed from "../posts/UserFeed";
 import PostFeed from "../posts/PostFeed";
+import Search from "../posts/Search";
+
 
 const Sitebar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,82 +28,55 @@ const Sitebar = (props) => {
   const toggle = () => {
     let newIsOpen = !isOpen;
     setIsOpen(newIsOpen);
-  };
+  }
+
+  const profileImage = localStorage.getItem('profileImage');
+
 
   return (
-    <Router>
-      <Navbar color="faded" light expand="md">
-        <NavbarBrand href="/home">
-          <img src={BrandLogo} alt="logo" style={{ width: 200 }} />
-        </NavbarBrand>
-        <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
+      <Router>
+        <Navbar fixed={"top"} color="faded" light expand="md">
+          <NavbarBrand href="/home"><img src={BrandLogo} alt="logo" style={{width: 200}} /></NavbarBrand>
+          <NavbarToggler onClick={toggle} />
+          <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <PostCreate
-                fetchMine={props.fetchMine}
-                fetchPosts={props.fetchPosts}
-                token={props.token}
-              />
-              <UserFeed token={props.token} />
-              <div className="sidebar-list-styling">
-                <ul className="view-list">
-                  <li>
-                    <Link to="/home"><Button onClick={props.fetchPosts}>Home</Button></Link>
-                  </li>
-                </ul>
-                <Link to="/post/mine">
-                  <Button onClick={props.fetchPosts}> Profile </Button>
-                </Link>
-              </div>
-
-              <Search
-                token={props.token}
-                fetchPosts={props.fetchPosts}
-                fetchMine={props.fetchMine}
-                setPosts={props.setPosts}
-              />
-              <Link to="/">
-                <Button onClick={props.clickLogout}>Logout</Button>
-              </Link>
+              <PostCreate  className="nav-button"  fetchMine={props.fetchMine} fetchPosts={props.fetchPosts} token={props.token} />
             </NavItem>
           </Nav>
-        </Collapse>
-      </Navbar>
+          <Nav className="ml-auto" navbar>
+            <NavItem className="nav-right">
+              <Link to="/home"><Button className="nav-button" style={{backgroundColor:"#ffffff"}}><i className="fas fa-home"></i></Button></Link>
+            </NavItem>
+            <NavItem className="nav-right">
+              <Link to="/"><Button className="nav-button" onClick={props.clickLogout}  style={{backgroundColor:"#ffffff"}}><i className="fas fa-sign-out-alt"></i></Button></Link>
+            </NavItem>
+            <NavItem className="nav-right">
+              <Link to="/post/mine"><Button className="UserFeed" onClick={props.fetchPosts}   style={{backgroundImage: `url(${profileImage})`}}></Button></Link>
+            </NavItem>
+        </Nav>
+      </Collapse>
+   </Navbar>
 
-      <Container>
+   <Container>
         <Row>
           <Col>
-            <Switch>
-              <Route exact path="/home">
-                <PostFeed
-                  fetchMine={props.fetchMine}
-                  posts={props.posts}
-                  fetchUsers={props.fetchUsers}
-                  users={props.users}
-                  fetchPosts={props.fetchPosts}
-                  token={props.token}
-                  setPosts={props.setPosts}
-                />
-              </Route>
-              <Route exact path="/post/mine">
-                <UserFeed
-                  fetchMine={props.fetchMine}
-                  mine={props.mine}
-                  posts={props.posts}
-                  fetchUsers={props.fetchUsers}
-                  users={props.users}
-                  fetchPosts={props.fetchPosts}
-                  token={props.token}
-                  setPosts={props.setPosts}
-                />
-              </Route>
-            </Switch>
+          <div className="filter">
+          <Search style={{maxWidth: 200}} token={props.token} fetchPosts={props.fetchPosts} fetchMine={props.fetchMine} setPosts={props.setPosts}
+              />
+          </div>
+           <Switch>
+           <Route exact path="/home"><PostFeed  posts={props.posts} fetchUsers={props.fetchUsers} users={props.users} fetchMine={props.fetchMine} fetchPosts={props.fetchPosts} token={props.token} /></Route>
+           <Route exact path="/post/mine"><UserFeed fetchMine={props.fetchMine} mine={props.mine} posts={props.posts} fetchUsers={props.fetchUsers} users={props.users} fetchPosts={props.fetchPosts} token={props.token} /></Route>
+           </Switch>
           </Col>
         </Row>
       </Container>
-    </Router>
+   
+ 
+   </Router>
   );
 };
+
 
 export default Sitebar;

@@ -44,8 +44,10 @@ const Register = (props) => {
       .then((data) => {
         history.push("/home");
         props.updateToken(data.sessionToken);
+        localStorage.setItem("profileImage", profileImage)
       });
   };
+
 
   return (
     <div className="wrapper">

@@ -24,6 +24,7 @@ const Login = (props) => {
       .then((data) => {
         history.push("/home");
         props.updateToken(data.sessionToken);
+        localStorage.setItem("profileImage",data.user.profileImage)
       }); //ADD CATCH
   };
 

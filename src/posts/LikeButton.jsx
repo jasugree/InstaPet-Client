@@ -11,9 +11,13 @@ const LikeButton = () => {
     
     return (
         
-        <div>
-            <Button onClick={() => setCount(count + 1)}> Like Me </Button>
+        <div className="like-num">
+            <div>
+                <Button style={{backgroundColor: "transparent", border: 0, fontSize: 24, padding: 0, marginRight: 8}} onClick={() => setCount(count + 1)}><i class="fas fa-paw"></i></Button>
+            </div>
+            <div>
             <p>{count}</p>
+            </div>
             
         </div>
     )
