@@ -15,7 +15,6 @@ const PostFeed = (props) => {
       console.log(joinArrays(props.users, props.posts))
 
     const postMapper = () => {
-        debugger
         if(!props.users || !props.posts) return
         return joinArrays(props.users, props.posts).slice(0).reverse().map((post, index) =>{
 

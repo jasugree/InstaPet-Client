@@ -27,7 +27,7 @@ const Sitebar = (props) => {
   return (
     <Router>
       <Navbar color="faded" light expand="md">
-        <NavbarBrand href="/">
+        <NavbarBrand href="/home">
           <img src={BrandLogo} alt="logo" style={{ width: 200 }} />
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
@@ -43,7 +43,7 @@ const Sitebar = (props) => {
               <div className="sidebar-list-styling">
                 <ul className="view-list">
                   <li>
-                    <Link to="/"><Button onClick={props.fetchPosts}>Home</Button></Link>
+                    <Link to="/home"><Button onClick={props.fetchPosts}>Home</Button></Link>
                   </li>
                 </ul>
                 <Link to="/post/mine">
