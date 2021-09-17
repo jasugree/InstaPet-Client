@@ -35,7 +35,7 @@ const UserFeed = (props) => {
                     <div className="postContainer" style={{textAlign: 'left'}}>
                         <div className="userHeader">
                             <img className="userProfilePic" src={post[1].profileImage} alt="user"/>
-                            <span className="userName">{post[1].firstName} {post[1].lastName}</span>
+                            <span className="userName">{post[1].userName}</span>
                         </div>
                         <div className="picture">
                             <img src={post[0].image} alt="post image" />
@@ -50,25 +50,20 @@ const UserFeed = (props) => {
                         </div>
                     </div>
                     <div className="description">
-                        {post[0].description}
+                    <span className="userName-description">{post[1].userName}</span> {post[0].description}
                     </div>
-                    
-                    <PostUpdate post={post[0]} token={props.token} fetchPosts={props.fetchPosts} />
+                    <PostUpdate post={post[0]} token={props.token} fetchPosts={props.fetchPosts} fetchMine={props.fetchMine} />
+                    <PostDelete post={post[0]} token={props.token} fetchPosts={props.fetchPosts} fetchMine={props.fetchMine} />
                     <div className="category">
                         {post[0].category}
                     </div>
-                    <PostDelete />
-                    
-
-                
-                
                 </div>
-              </div>
-            </tr>
-          </div>
-        );
-      });
-  };
+                </div>
+                </tr>
+                </div>
+        )
+        })
+    }
 
   return <div>{postMapper()}</div>;
 };
