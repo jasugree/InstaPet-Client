@@ -240,3 +240,19 @@ label.custom-file-upload:hover {
 		transition: color 0.25s ease;
 	}
 }
+
+button.UserFeed.btn.btn-secondary {
+	border-radius: 50%;
+	background-position: center;
+	background-size: cover;
+	background-size: 100%;
+	padding: 20px;
+	margin: 5px;
+}
+
+button.btn.btn-secondary {
+	padding: 3px;
+	color: #0086c3;
+	border: none;
+	font-size: 2em;
+}

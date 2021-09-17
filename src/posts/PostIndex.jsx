@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col } from "reactstrap";
 import Sitebar from "../navbar/Navbar";
-import PostFeed from "./PostFeed";
-import PostCreate from "./PostCreate";
-import UserFeed from "./UserFeed";
+
 
 const PostIndex = (props) => {
   const [posts, setPosts] = useState(null);
   const [users, setUsers] = useState(null);
   const [mine, setMine] = useState(null);
+
 
   const fetchMine = () => {
     fetch("http://localhost:3001/post/mine", {
@@ -66,6 +64,9 @@ const PostIndex = (props) => {
   useEffect(() => {
     fetchUsers();
   }, []);
+
+
+
 console.log(posts)
 console.log(users)
   return (

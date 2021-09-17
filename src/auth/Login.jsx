@@ -21,6 +21,7 @@ const Login = (props) => {
       .then((response) => response.json())
       .then((data) => {
         props.updateToken(data.sessionToken);
+        localStorage.setItem("profileImage",data.user.profileImage)
       }); //ADD CATCH
   };
 

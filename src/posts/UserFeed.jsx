@@ -24,10 +24,10 @@ const UserFeed = (props) => {
                 <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}> 
                 <tr key={index}>
                     <div className="postContainer" style={{textAlign: 'left'}}>
-                        <div className="userHeader">
+                        {/* <div className="userHeader">
                             <img className="userProfilePic" src={post[1].profileImage} alt="user"/>
                             <span className="userName">{post[1].firstName} {post[1].lastName}</span>
-                        </div>
+                        </div> */}
                         <div className="picture">
                             <img src={post[0].image} alt="post image" />
                         </div>

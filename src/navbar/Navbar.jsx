@@ -20,6 +20,7 @@ import BrandLogo from "../InstaPet-logo.svg"
 import UserFeed from "../posts/UserFeed";
 import PostFeed from "../posts/PostFeed";
 
+
 const Sitebar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   console.log(props);
@@ -27,6 +28,8 @@ const Sitebar = (props) => {
     let newIsOpen = !isOpen;
     setIsOpen(newIsOpen);
   }
+
+  const profileImage = localStorage.getItem('profileImage');
 
 
   return (
@@ -37,19 +40,16 @@ const Sitebar = (props) => {
       <Collapse isOpen={isOpen} navbar>
       <Nav className="ml-auto" navbar>
         <NavItem>
-            <PostCreate fetchMine={props.fetchMine} fetchPosts={props.fetchPosts} token={props.token} />
-            <UserFeed token={props.token} />
-            <div className="sidebar-list-styling">
 
-            <ul className="view-list">
-               <li><Link to="/">Home</Link></li>
-               </ul>
-               <Link to="/post/mine"><Button onClick={props.fetchPosts}> Profile </Button></Link>
+            <div className="navbar-buttons">
+            <UserFeed token={props.token} />
+            <PostCreate  fetchMine={props.fetchMine} fetchPosts={props.fetchPosts} token={props.token} />
+               <Link to="/"><Button style={{backgroundColor:"#ffffff"}}><i className="fas fa-home"></i></Button></Link>
+               <Link to="/post/mine"><Button className="UserFeed" onClick={props.fetchPosts}   style={{backgroundImage: `url(${profileImage})`}}></Button></Link>
+               <Link to="/"><Button onClick={props.clickLogout}  style={{backgroundColor:"#ffffff"}}><i className="fas fa-sign-out-alt"></i></Button></Link>
 
             </div>
          
-
-            <Link to="/"><Button onClick={props.clickLogout}>Logout</Button></Link>
           </NavItem>
         </Nav>
       </Collapse>
