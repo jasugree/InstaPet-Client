@@ -1,9 +1,9 @@
 import React, { useReducer, useState } from 'react';
 import PostUpdate from './PostUpdate';
+
 import PostDelete from './PostDelete';
 import LikeButton from './LikeButton';
 import {Button, ButtonDropdown, DropdownItem, DropdownMenu, DropdownToggle} from "reactstrap";
-
 
 const PostFeed = (props) => {
     console.log(props.users);
@@ -54,6 +54,8 @@ const PostFeed = (props) => {
                     <div className="description">
                     <span className="userName-description">{post[1].userName}</span> {post[0].description}
                     </div>
+                    <PostUpdate post={post[0]} token={props.token} fetchPosts={props.fetchPosts} fetchMine={props.fetchMine} />
+                    <PostDelete post={post[0]} token={props.token} fetchPosts={props.fetchPosts} fetchMine={props.fetchMine} />
                     <div className="category">
                         {post[0].category}
                     </div>
