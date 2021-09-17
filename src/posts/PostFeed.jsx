@@ -22,10 +22,6 @@ const PostFeed = (props) => {
       console.log(joinArrays(props.users, props.posts))
 
     const postMapper = () => {
-<<<<<<< HEAD
-=======
-
->>>>>>> f0ebd67253ae25f2d166ce4680d67aee11bc52c1
         if(!props.users || !props.posts) return
         return joinArrays(props.users, props.posts).slice(0).reverse().map((post, index) =>{
 
@@ -86,7 +82,7 @@ const PostFeed = (props) => {
                     </div>
 
                 
-                <PostUpdate post={post[0]} token={props.token} fetchPosts={props.fetchPosts} modal={showUpdateModal} setModal={setShowUpdateModal} /> 
+                {showUpdateModal ? <PostUpdate post={post[0]} token={props.token} fetchPosts={props.fetchPosts} modal={showUpdateModal} setModal={setShowUpdateModal} /> : null} 
                     
                 </div>
                 </div>

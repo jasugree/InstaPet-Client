@@ -38,8 +38,8 @@ const PostUpdate = (props) => {
   const [editDesc, setEditDesc] = useState(props.post.description);
   const [editCat, setEditCat] = useState(props.post.category);
   const [editLike, setEditLike] = useState(props.post.like);
-  // const [modal, setModal] = useState(false);
- const {modal, setModal} = props
+  const [modal, setModal] = useState(props.modal);
+//  const {modal, setModal} = props
   const toggle = () => {
     setModal(!modal);
     debugger
