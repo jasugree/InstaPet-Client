@@ -240,3 +240,45 @@ label.custom-file-upload:hover {
     transition: color 0.25s ease;
   }
 }
+
+button.UserFeed.btn.btn-secondary {
+	border-radius: 50%;
+	background-position: center;
+	background-size: cover;
+	background-size: 100%;
+	padding: 20px;
+	margin: 5px;
+}
+
+button.btn.btn-secondary {
+	padding: 3px;
+	color: #0086c3;
+	border: none;
+	font-size: 2em;
+}
+
+div#userfeed {
+height: 30em;
+width: 30em;
+}
+
+span.userName {
+	font-size: 2em;
+}
+
+img.userProfilePic {
+	height: 4em;
+	width: 4em;
+	border: 4px solid #0086c3;
+	padding: 2px;
+	margin-bottom: 5px;
+}
+
+div.nameAndProfile {
+	background-color: #ffffff;
+	padding-top: 14px;
+	padding-bottom: 8px;
+
+	
+	
+}
