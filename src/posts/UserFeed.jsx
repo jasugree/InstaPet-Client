@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import PostDelete from './PostDelete';
 import PostUpdate from './PostUpdate';
+import {Modal} from "reactstrap";
 
 
 const UserFeed = (props) => {

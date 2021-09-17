@@ -1,11 +1,17 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useState } from 'react';
 import PostUpdate from './PostUpdate';
-import PostDelete from './PostDelete'
+
+import PostDelete from './PostDelete';
+import LikeButton from './LikeButton';
+import {Button, ButtonDropdown, DropdownItem, DropdownMenu, DropdownToggle} from "reactstrap";
 
 const PostFeed = (props) => {
     console.log(props.users);
     console.log(props.posts);
     console.log(props.token);
+
+    const [dropdownOpen, setOpen] = useState(false);
+    const toggle = () => setOpen(!dropdownOpen);
 
     const joinArrays = (userArr, postArr) => {
         if(!userArr || !postArr) return
@@ -15,15 +21,14 @@ const PostFeed = (props) => {
       console.log(joinArrays(props.users, props.posts))
 
     const postMapper = () => {
-        debugger
+
         if(!props.users || !props.posts) return
         return joinArrays(props.users, props.posts).slice(0).reverse().map((post, index) =>{
 
             const createdAt = new Date(post[0].createdAt);
             const createdDate = createdAt.toLocaleDateString('en-US');
             const createdTime = createdAt.toLocaleTimeString('en-US')
-            const checkData = () => {
-                return post.length > 0 ? <PostUpdate post={post[0]} token={props.token} /> : 'loading data'}
+            
             return(
 
                 <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}> 
@@ -53,6 +58,24 @@ const PostFeed = (props) => {
                     <div className="category">
                         {post[0].category}
                     </div>
+                    
+                    <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
+                        <DropdownToggle> ... </DropdownToggle>
+                    <DropdownMenu> 
+                     
+                    <PostUpdate post={post[0]} token={props.token} fetchPosts={props.fetchPosts} /> 
+                    
+                    <DropdownItem>
+                    <PostDelete post={post[0]} token={props.token} fetchPosts={props.fetchPosts} />
+                    </DropdownItem>
+                    </DropdownMenu>
+                    </ButtonDropdown>
+
+                    <div>
+                    <LikeButton/>
+                    </div>
+
+                    
                 </div>
                 </div>
                 </tr>

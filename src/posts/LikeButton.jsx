@@ -3,17 +3,17 @@ import { useState } from 'react';
 
 
 const LikeButton = () => {
-    const [liked, setLiked] = useState(null);
+    const [count, setCount] = useState(null);
     // console.log('pic likes')
-    console.log({liked})
+    console.log({count})
     
 
     
     return (
         
         <div>
-            <Button onClick={() => setLiked(!liked)}> Like Me </Button>
-            <p>{liked}</p>
+            <Button onClick={() => setCount(count + 1)}> Like Me </Button>
+            <p>{count}</p>
             
         </div>
     )

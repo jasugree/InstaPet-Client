@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
+import { Button, Modal, ModalHeader, ModalBody, DropdownItem } from "reactstrap";
 
  const PostDelete = (props) => {
     const [modal, setModal] = useState(false);
@@ -24,7 +24,7 @@ import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
         <div>
         <Button color="" size="sm" onClick={toggle}>
         Delete Your Post
-      </Button>
+        </Button>
       <Modal isOpen={modal}>
         <ModalHeader toggle={toggle}>Delete Your Post</ModalHeader>
         <ModalBody>
