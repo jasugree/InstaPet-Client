@@ -81,9 +81,14 @@ const PostFeed = (props) => {
 
 
 
-    return ( 
+    return (
+         
         <div>
+<<<<<<< HEAD
             <div className="filter">
+=======
+                      <div className="filter">
+>>>>>>> 761604faf52928c40d70abc439d94c34048f679f
           <Search style={{maxWidth: 200}} token={props.token} fetchPosts={props.fetchPosts} fetchMine={props.fetchMine} setPosts={props.setPosts}
               />
           </div>
