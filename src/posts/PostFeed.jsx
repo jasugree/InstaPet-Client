@@ -3,6 +3,7 @@ import PostUpdate from './PostUpdate';
 import PostDelete from './PostDelete';
 import LikeButton from './LikeButton';
 import {Button, ButtonDropdown, DropdownItem, DropdownMenu, DropdownToggle} from "reactstrap";
+import Search from './Search';
 
 const PostFeed = (props) => {
     console.log(props.users);
@@ -80,8 +81,13 @@ const PostFeed = (props) => {
 
 
 
-    return ( 
+    return (
+         
         <div>
+                      <div className="filter">
+          <Search style={{maxWidth: 200}} token={props.token} fetchPosts={props.fetchPosts} fetchMine={props.fetchMine} setPosts={props.setPosts}
+              />
+          </div>
             {postMapper()}
         </div>
      );
