@@ -148,6 +148,8 @@ html * {
 }
 
 body {
+	background-size: cover;
+	background-position: center;
 	background: #dbf9ff !important;
 }
 
@@ -312,8 +314,15 @@ div.nameAndProfile {
 .btn-secondary:focus {
 	box-shadow: none !important;
 }
-.nav-right {
-	margin: 0px 60px;
+.right-options {
+	column-gap: 40px;
+	flex-basis: 275px;
+}
+
+.center-option {
+	flex-grow: 1;
+	align-items: center;
+	justify-content: center;
 }
 
 .delete {

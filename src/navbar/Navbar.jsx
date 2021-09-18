@@ -39,12 +39,12 @@ const Sitebar = (props) => {
           <NavbarBrand href="/home"><img src={BrandLogo} alt="logo" style={{width: 200}} /></NavbarBrand>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
-          <Nav className="ml-auto" navbar>
+          <Nav className="ml-auto center-option" navbar>
             <NavItem>
               <PostCreate  className="nav-button"  fetchMine={props.fetchMine} fetchPosts={props.fetchPosts} token={props.token} />
             </NavItem>
           </Nav>
-          <Nav className="ml-auto" navbar>
+          <Nav className="ml-auto right-options" navbar>
             <NavItem className="nav-right">
               <Link to="/home"><Button className="nav-button" style={{backgroundColor:"#ffffff"}}><i className="fas fa-home"></i></Button></Link>
             </NavItem>
