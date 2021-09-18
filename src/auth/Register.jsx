@@ -45,6 +45,7 @@ const Register = (props) => {
         history.push("/home");
         props.updateToken(data.sessionToken);
         localStorage.setItem("profileImage", profileImage)
+        localStorage.setItem("userName", userName)
       });
   };
 

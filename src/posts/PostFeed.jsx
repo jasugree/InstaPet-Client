@@ -1,9 +1,9 @@
 import React, { useReducer, useState } from 'react';
 import PostUpdate from './PostUpdate';
-
 import PostDelete from './PostDelete';
 import LikeButton from './LikeButton';
 import {Button, ButtonDropdown, DropdownItem, DropdownMenu, DropdownToggle} from "reactstrap";
+import Search from './Search';
 
 const PostFeed = (props) => {
     console.log(props.users);
@@ -11,6 +11,7 @@ const PostFeed = (props) => {
     console.log(props.token);
 
     const [dropdownOpen, setOpen] = useState(false);
+    const [showUpdateModal, setShowUpdateModal]= useState(false)
     const toggle = () => setOpen(!dropdownOpen);
 
     const joinArrays = (userArr, postArr) => {
@@ -21,13 +22,15 @@ const PostFeed = (props) => {
       console.log(joinArrays(props.users, props.posts))
 
     const postMapper = () => {
-
         if(!props.users || !props.posts) return
-        return joinArrays(props.users, props.posts).slice(0).reverse().map((post, index) =>{
+        return joinArrays(props.users, props.posts)
+        .sort((a,b) => a[0].id - b[0].id)
+        .reverse()
+        .map((post, index) =>{
 
             const createdAt = new Date(post[0].createdAt);
             const createdDate = createdAt.toLocaleDateString('en-US');
-            const createdTime = createdAt.toLocaleTimeString('en-US')
+            const createdTime = createdAt.toLocaleTimeString([], {timeStyle: 'short'})
             
             return(
 
@@ -41,42 +44,34 @@ const PostFeed = (props) => {
                         <div className="picture">
                             <img src={post[0].image} alt="post image" />
                         </div>
-                <div className="postDetails">
-                    <div className="timeLike">
-                        <div className="time">
-                            {createdDate} at {createdTime}
-                        </div>
-                        <div className="likes">
-                            {post[0].likes}
-                        </div>
+                <div className="postActions">
+                    <div className="like">
+                        <LikeButton/>
                     </div>
+                    <div className="delete">
+                        <PostDelete style={{marginLeft: "auto"}} post={post[0]} token={props.token} fetchPosts={props.fetchPosts} fetchMine={props.fetchMine} />
+                    </div>
+                    <div className="edit">
+                        <PostUpdate post={post[0]} token={props.token} fetchPosts={props.fetchPosts} fetchMine={props.fetchMine} />
+                    </div>
+                    </div>
+                    <div className="postDetails">
+                        <hr style={{marginTop: "0em"}}/>
                     <div className="description">
                     <span className="userName-description">{post[1].userName}</span> {post[0].description}
-                    </div>
-                    <PostUpdate post={post[0]} token={props.token} fetchPosts={props.fetchPosts} fetchMine={props.fetchMine} />
-                    <PostDelete post={post[0]} token={props.token} fetchPosts={props.fetchPosts} fetchMine={props.fetchMine} />
+                    </div>                    
+                    <div className="postMeta">
                     <div className="category">
-                        {post[0].category}
+                        {post[0].category} 
                     </div>
-                    
-                    <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
-                        <DropdownToggle> ... </DropdownToggle>
-                    <DropdownMenu> 
-                     
-                    <PostUpdate post={post[0]} token={props.token} fetchPosts={props.fetchPosts} /> 
-                    
-                    <DropdownItem>
-                    <PostDelete post={post[0]} token={props.token} fetchPosts={props.fetchPosts} />
-                    </DropdownItem>
-                    </DropdownMenu>
-                    </ButtonDropdown>
-
-                    <div>
-                    <LikeButton/>
+                    <div className="dot">
+                    {"•"}
+                    </div>              
+                    <div className="time">
+                            {createdDate} at {createdTime}
                     </div>
-
-                    
-                </div>
+                    </div> 
+                </div>   
                 </div>
                 </tr>
                 </div>
@@ -88,6 +83,10 @@ const PostFeed = (props) => {
 
     return ( 
         <div>
+            <div className="filter">
+          <Search style={{maxWidth: 200}} token={props.token} fetchPosts={props.fetchPosts} fetchMine={props.fetchMine} setPosts={props.setPosts}
+              />
+          </div>
             {postMapper()}
         </div>
      );

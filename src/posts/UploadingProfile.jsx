@@ -31,7 +31,6 @@ const UploadingProfile = (props) => {
 
   return (
     <div>
-      <Container>
         <img id="profile-pic" src={ image == "" ? (PlaceholderImage) :(image)} alt="" />
         <FormGroup id="uploader">
         <label for="profile-image-upload" class="custom-file-upload">
@@ -45,7 +44,6 @@ const UploadingProfile = (props) => {
           />          Add your Photo
           </label>
         </FormGroup>
-      </Container>
     </div>
   );
 };

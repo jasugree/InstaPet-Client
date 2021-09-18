@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { Container, Row, Col } from "reactstrap";
 
+const profileImage = localStorage.getItem('profileImage');
+const userName = localStorage.getItem('userName');
 
 const UserFeed = (props) => {
     console.log(props.users);
@@ -28,32 +30,28 @@ const UserFeed = (props) => {
             const createdTime = createdAt.toLocaleTimeString('en-US')
 
             return (
-<div id="header">
-    <div className="nameAndProfile">
-                <img className="userProfilePic" src={post[1].profileImage} alt="user"/>
-                <span className="userName">{post[1].userName}</span>
-                </div>
-                <div>
-                <Container>
-                    
-                <Row>
                 
-                  <Col sm> <img src={post[0].image} alt="post image"/></Col>
-                  <Col sm> <img src={post[0].image} alt="post image"/></Col>
-                  <Col sm> <img src={post[0].image} alt="post image"/></Col>
-                 
-                </Row>
-              </Container>  
-              </div>
-</div>
-
-
+                  <Col xs={4}> <img src={post[0].image} alt="post image"/></Col>
 
             )
         })
     }
 
-    return <div>{postMapper()}</div>;
-};
+    return (
+    <div>
+    <div id="header">
+    <div className="nameAndProfile">
+                <img className="userFeedProfilePic" src={profileImage} alt="user"/>
+                <span className="userFeedName userName">{userName}</span>
+                </div>
+              <hr/>
+    <Container style={{paddingTop: 20}}>
+<Row>
+    {postMapper()}
+</Row>
+    </Container>
+    </div>
+    </div>
+    )};
 
 export default UserFeed;

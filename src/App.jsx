@@ -4,6 +4,7 @@ import "./App.css";
 import PostIndex from "./posts/PostIndex";
 import Auth from "./auth/Auth";
 import LikeButton from "./posts/LikeButton";
+import background from "../src/InstaPet-background.svg"
 
 
 function App() {
@@ -35,8 +36,7 @@ function App() {
   };
 
   return (
-    <div className="App">
-      {/* <Sitebar clickLogout={clearToken}/> */}
+    <div className="App" style={{background: sessionToken ? '#dbf9ff' : `url(${background})`, backgroundSize: 'cover', backgroundPosition: "center" }}>
       {protectedViews()}
     </div>
   );
