@@ -284,10 +284,8 @@ img.userFeedProfilePic {
 }
 
 div.nameAndProfile {
-
 	padding-top: 14px;
 	padding-bottom: 8px;
-<<<<<<< HEAD
 	padding-left: 10%;
 	text-align: left;
 }
@@ -343,56 +341,6 @@ div.nameAndProfile {
 	justify-content: center;
 }
 
-=======
-}
-
-#search-button {
-	color: white;
-	background: #0086c3;
-	border: none;
-}
-
-.filter {
-	display: flex;
-	justify-content: flex-end;
-	max-width: 600px;
-	margin: auto;
-	margin-bottom: 15px;
-}
-
-.navbar-nav {
-	align-items: center;
-}
-/* .navbar{
-  position: fixed !important;
-  wiu
-} */
-
-.container {
-	padding-top: 100px;
-}
-.nav-button {
-	border: none !important;
-}
-
-.nav-button {
-	font-size: 2rem !important;
-}
-.btn-secondary:focus {
-	box-shadow: none !important;
-}
-.right-options {
-	column-gap: 40px;
-	flex-basis: 275px;
-}
-
-.center-option {
-	flex-grow: 1;
-	align-items: center;
-	justify-content: center;
-}
-
->>>>>>> 761604faf52928c40d70abc439d94c34048f679f
 .delete {
 	margin-left: auto;
 	padding: 0px 8px;
@@ -422,15 +370,12 @@ div.nameAndProfile {
 .dot {
 	margin: auto 5px;
 }
-<<<<<<< HEAD
-.col-4{
+.col-4 {
 	margin-bottom: 25px;
 }
-.col-4 img{
-height: 270px;
-object-fit: cover;
-border-top: 5px solid #ffffff;
-border-bottom: 5px solid #ffffff;
+.col-4 img {
+	height: 270px;
+	object-fit: cover;
+	border-top: 5px solid #ffffff;
+	border-bottom: 5px solid #ffffff;
 }
-=======
->>>>>>> 761604faf52928c40d70abc439d94c34048f679f
