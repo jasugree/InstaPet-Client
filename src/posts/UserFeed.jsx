@@ -21,23 +21,21 @@ const UserFeed = (props) => {
             const createdTime = createdAt.toLocaleTimeString('en-US')
             return (
                 
-                  <Col> <img src={post[0].image} alt="post image"/></Col>
-                  
-                  
-                 
- 
+                  <Col xs={4}> <img src={post[0].image} alt="post image"/></Col>
+
             )
         })
     }
+
     return (
     <div>
     <div id="header">
     <div className="nameAndProfile">
-                <img className="userProfilePic" src={profileImage} alt="user"/>
-                <span className="userName">{userName}</span>
+                <img className="userFeedProfilePic" src={profileImage} alt="user"/>
+                <span className="userFeedName userName">{userName}</span>
                 </div>
-                <div></div>
-    <Container>
+              <hr/>
+    <Container style={{paddingTop: 20}}>
 <Row>
     {postMapper()}
 </Row>
@@ -45,4 +43,5 @@ const UserFeed = (props) => {
     </div>
     </div>
     )};
+
 export default UserFeed;

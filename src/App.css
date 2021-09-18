@@ -273,10 +273,26 @@ img.userProfilePic {
 	margin-bottom: 5px;
 }
 
+img.userFeedProfilePic {
+	height: 200px;
+	width: 200px;
+	border: 4px solid #0086c3;
+	padding: 2px;
+	margin-bottom: 5px;
+	border-radius: 100%;
+	object-fit: cover;
+}
+
 div.nameAndProfile {
-	background-color: #ffffff;
 	padding-top: 14px;
 	padding-bottom: 8px;
+	padding-left: 10%;
+	text-align: left;
+}
+
+.userFeedName {
+	font-size: 40px;
+	padding: 7%;
 }
 
 #search-button {
@@ -353,4 +369,13 @@ div.nameAndProfile {
 }
 .dot {
 	margin: auto 5px;
+}
+.col-4 {
+	margin-bottom: 25px;
+}
+.col-4 img {
+	height: 270px;
+	object-fit: cover;
+	border-top: 5px solid #ffffff;
+	border-bottom: 5px solid #ffffff;
 }
