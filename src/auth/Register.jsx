@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import {
   Button,
   Form,
@@ -17,6 +17,8 @@ const Register = (props) => {
   const [lastName, setLastName] = useState("");
   const [profileImage, setprofileImage] = useState('');
   const [userName, setUserName] = useState("");
+
+  let history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -40,9 +42,12 @@ const Register = (props) => {
     })
       .then((response) => response.json())
       .then((data) => {
+        history.push("/home");
         props.updateToken(data.sessionToken);
+        localStorage.setItem("profileImage", profileImage)
       });
   };
+
 
   return (
     <div className="wrapper">

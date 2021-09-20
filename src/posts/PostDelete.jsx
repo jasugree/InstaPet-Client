@@ -1,25 +1,30 @@
 import React, { useState } from "react";
-import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
+import { Button, Modal, ModalHeader, ModalBody, DropdownItem } from "reactstrap";
 
-const PostDelete = (props) => {
-  const [modal, setModal] = useState(false);
-  const toggle = () => setModal(!modal);
+ const PostDelete = (props) => {
+    const [modal, setModal] = useState(false);
+    const toggle = () => setModal(!modal);
 
-  const deletePost = (posts) => {
-    fetch(`http://localhost:3001/post/${posts.id}`, {
-      method: "DELETE",
-      headers: new Headers({
-        "Content-Type": "application/json",
-        Authorization: props.token,
-      }),
-    }).then(() => props.fetchPosts());
-  };
-
-  return (
-    <div>
-      <Button color="" size="sm" onClick={toggle}>
+    const deletePost = (posts) => {    
+    fetch(`http://localhost:3001/post/delete/${props.post.id}`, {
+          method: "DELETE",
+          headers: new Headers({
+            "Content-Type": "application/json",
+            'Authorization': props.token,
+          })
+        })
+          .then(() =>{ 
+          props.fetchPosts();
+          props.fetchMine();
+          toggle();
+          });
+    }
+    
+    return (
+        <div>
+        <Button color="" size="sm" onClick={toggle}>
         Delete Your Post
-      </Button>
+        </Button>
       <Modal isOpen={modal}>
         <ModalHeader toggle={toggle}>Delete Your Post</ModalHeader>
         <ModalBody>

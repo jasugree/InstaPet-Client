@@ -9,6 +9,7 @@ const PostIndex = (props) => {
   const [users, setUsers] = useState(null);
   const [mine, setMine] = useState(null);
 
+
   const fetchMine = () => {
     fetch("http://localhost:3001/post/mine", {
       method: "GET",
@@ -43,7 +44,7 @@ const PostIndex = (props) => {
 
   useEffect(() => {
     fetchPosts();
-  }, []);
+  }, [props.token]);
 
   const fetchUsers = () => {
     fetch("http://localhost:3001/user", {
@@ -67,15 +68,6 @@ const PostIndex = (props) => {
   console.log(users);
   return (
     <div>
-      {/* <Sitebar  token={props.token} fetchPosts={fetchPosts} clickLogout={props.clearToken} />
-      <Container>
-        <Row>
-          <Col>
-            <PostFeed postToUpdate={postToUpdate} posts={posts} fetchUsers={fetchUsers} users={users} fetchPosts={fetchPosts} token={props.token}  />
->>>>>>> bdd594e4f008a9b4f294bafdd91d79dd2223a2f9
-          </Col>
-        </Row>
-      </Container> */}
 
       <Sitebar
         token={props.token}

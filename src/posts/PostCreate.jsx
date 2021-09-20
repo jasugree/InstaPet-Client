@@ -79,9 +79,10 @@ const PostCreate = (props) => {
 
   return (
     <div>
-      <Button color="danger" onClick={toggle}>
-        Create Post
+      <Button onClick={toggle} style={{backgroundColor:"#ffffff"}}>
+      <i className="far fa-plus-square"></i>  
       </Button>
+   
       <Modal isOpen={modal}>
         <ModalHeader toggle={toggle}>Share Your Pet</ModalHeader>
         <ModalBody>
