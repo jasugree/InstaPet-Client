@@ -23,8 +23,11 @@ const Login = (props) => {
       .then((response) => response.json())
       .then((data) => {
         history.push("/home");
+        console.log("RIGH HERE")
+        console.log(data)
         props.updateToken(data.sessionToken);
         localStorage.setItem("profileImage",data.user.profileImage)
+        localStorage.setItem("userName",data.user.userName)
       }); //ADD CATCH
   };
 

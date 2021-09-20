@@ -40,7 +40,9 @@ p {
 		transform: rotate(360deg);
 	}
 }
-
+.App {
+	background-size: cover !important;
+}
 /* JAKE'S BASE STYLING */
 .wrapper {
 	height: 100vh;
@@ -197,8 +199,8 @@ label {
 #profile-pic {
 	object-fit: cover;
 	border-radius: 100%;
-	width: 200px;
-	height: 200px;
+	width: 150px;
+	height: 150px;
 	text-align: center;
 	display: block;
 	justify-content: center;
@@ -256,13 +258,20 @@ button.UserFeed.btn.btn-secondary {
 	margin: 5px;
 }
 
-button.btn.btn-secondary {
+.btn.btn-secondary {
 	color: #0086c3;
+	background: #0086c3;
 }
 
-div#userfeed {
-	height: 30em;
-	width: 30em;
+.nav-button:hover {
+	color: #0074aa !important;
+}
+.nav-button:active {
+	color: #0074aa !important;
+}
+
+.UserFeed {
+	border: none !important;
 }
 
 img.userProfilePic {
@@ -312,10 +321,6 @@ div.nameAndProfile {
 .navbar-nav {
 	align-items: center;
 }
-/* .navbar{
-  position: fixed !important;
-  wiu
-} */
 
 .container {
 	padding-top: 100px;
@@ -327,7 +332,7 @@ div.nameAndProfile {
 .nav-button {
 	font-size: 2rem !important;
 }
-.btn-secondary:focus {
+.btn:focus {
 	box-shadow: none !important;
 }
 .right-options {

@@ -46,10 +46,10 @@ const Sitebar = (props) => {
           </Nav>
           <Nav className="ml-auto right-options" navbar>
             <NavItem className="nav-right">
-              <Link to="/home"><Button className="nav-button" style={{backgroundColor:"#ffffff"}}><i className="fas fa-home"></i></Button></Link>
+              <Button href="/home"color="primary" className="nav-button" style={{color: "#0086c3", backgroundColor:"#ffffff"}}><i className="fas fa-home"></i></Button>
             </NavItem>
             <NavItem className="nav-right">
-              <Link to="/"><Button className="nav-button" onClick={props.clickLogout}  style={{backgroundColor:"#ffffff"}}><i className="fas fa-sign-out-alt"></i></Button></Link>
+              <Link to="/"><Button className="nav-button" color="primary" onClick={props.clickLogout}  style={{color: "#0086c3", backgroundColor:"#ffffff"}}><i className="fas fa-sign-out-alt"></i></Button></Link>
             </NavItem>
             <NavItem className="nav-right">
               <Link to="/post/mine"><Button className="UserFeed" onClick={props.fetchPosts}   style={{backgroundImage: `url(${profileImage})`}}></Button></Link>
