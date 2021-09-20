@@ -50,7 +50,24 @@ const Search = (props) => {
     <div className="search-dropdown">
       <Dropdown isOpen={dropdownOpen} toggle={toggle}>
         <DropdownToggle id="search-button" caret>Search by Category</DropdownToggle>
-        <DropdownMenu>
+        <DropdownMenu
+        modifiers={{
+          setMaxHeight: {
+            enabled: true,
+            order: 890,
+            fn: (data) => {
+              return {
+                ...data,
+                styles: {
+                  ...data.styles,
+                  overflow: 'auto',
+                  maxHeight: '200px'
+                },
+              };
+            },
+          },
+        }}
+        >
           <DropdownItem onClick={() => handleFetch(AWESOME_AARDVARK)}>
             {AWESOME_AARDVARK}
           </DropdownItem>

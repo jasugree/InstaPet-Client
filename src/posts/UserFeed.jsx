@@ -1,8 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Row, Col } from "reactstrap";
-const profileImage = localStorage.getItem('profileImage');
-const userName = localStorage.getItem('userName');
+// // const [profileImage, setProfileImage] = useState(localStorage.getItem('profileImage'));
+// // const [userName, setUserName] = useState(localStorage.getItem('userName'));
+// const profileImage = localStorage.getItem('profileImage');
+// const userName = localStorage.getItem('userName');
+
+// // useEffect(() =>{
+// //     setProfileImage()
+// // })
 const UserFeed = (props) => {
+    const profileImage = localStorage.getItem('profileImage');
+    const userName = localStorage.getItem('userName');
     console.log(props.users);
     console.log(props.mine);
     const joinArrays = (userArr, postArr) => {

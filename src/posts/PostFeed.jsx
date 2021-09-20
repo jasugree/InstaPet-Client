@@ -14,6 +14,8 @@ const PostFeed = (props) => {
     const [showUpdateModal, setShowUpdateModal]= useState(false)
     const toggle = () => setOpen(!dropdownOpen);
 
+    const profileImage = localStorage.getItem('profileImage');
+
     const joinArrays = (userArr, postArr) => {
         if(!userArr || !postArr) return
         return postArr.map(post=>[post, ...userArr.filter(u=>u.id==post.owner)])
@@ -48,10 +50,10 @@ const PostFeed = (props) => {
                     <div className="like">
                         <LikeButton/>
                     </div>
-                    <div className="delete">
+                    <div className="delete" style={{display: (post[1].profileImage === profileImage) ? 'block' : 'none'}}>
                         <PostDelete style={{marginLeft: "auto"}} post={post[0]} token={props.token} fetchPosts={props.fetchPosts} fetchMine={props.fetchMine} />
                     </div>
-                    <div className="edit">
+                    <div className="edit" style={{display: (post[1].profileImage === profileImage) ? 'block' : 'none'}}>
                         <PostUpdate post={post[0]} token={props.token} fetchPosts={props.fetchPosts} fetchMine={props.fetchMine} />
                     </div>
                     </div>

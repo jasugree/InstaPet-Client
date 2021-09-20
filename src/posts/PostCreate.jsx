@@ -79,7 +79,7 @@ const PostCreate = (props) => {
 
   return (
     <div>
-      <Button onClick={toggle} style={{backgroundColor:"#ffffff", border: "none", fontSize: "2em"}}>
+      <Button className="nav-button" onClick={toggle} color="primary" style={{color: "#0086c3", backgroundColor:"#ffffff", border: "none", fontSize: "2em"}}>
       <i className="fas fa-plus-square"></i>  
       </Button>
    
@@ -129,7 +129,7 @@ const PostCreate = (props) => {
                 <option>{ZESTY_ZEBRA}</option>
               </Input>
             </FormGroup>
-            <Button type="post">Post</Button>
+            <Button style={{color: 'white', backgroundColor: '#0086c3'}} type="post">Post</Button>
           </Form>
         </ModalBody>
       </Modal>
