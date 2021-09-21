@@ -79,10 +79,20 @@ const PostCreate = (props) => {
 
   return (
     <div>
-      <Button className="nav-button" onClick={toggle} color="primary" style={{color: "#0086c3", backgroundColor:"#ffffff", border: "none", fontSize: "2em"}}>
-      <i className="fas fa-plus-square"></i>  
+      <Button
+        className="nav-button"
+        onClick={toggle}
+        color="primary"
+        style={{
+          color: "#0086c3",
+          backgroundColor: "#ffffff",
+          border: "none",
+          fontSize: "2em",
+        }}
+      >
+        <i className="fas fa-plus-square"></i>
       </Button>
-   
+
       <Modal isOpen={modal}>
         <ModalHeader toggle={toggle}>Share Your Pet</ModalHeader>
         <ModalBody>
@@ -108,6 +118,7 @@ const PostCreate = (props) => {
                 required
                 onChange={(e) => setCategory(e.target.value)}
               >
+                <option></option>
                 <option>{AWESOME_AARDVARK}</option>
                 <option>{COOL_CAT}</option>
                 <option>{DARLING_DOGGO}</option>
@@ -129,7 +140,16 @@ const PostCreate = (props) => {
                 <option>{ZESTY_ZEBRA}</option>
               </Input>
             </FormGroup>
-            <Button style={{color: 'white', backgroundColor: '#0086c3'}} type="post">Post</Button>
+            <Button
+              style={{
+                color: "white",
+                backgroundColor: "#0086c3",
+                borderRadius: 100,
+              }}
+              type="post"
+            >
+              Post
+            </Button>
           </Form>
         </ModalBody>
       </Modal>
