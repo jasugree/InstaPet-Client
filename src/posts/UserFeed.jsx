@@ -29,7 +29,7 @@ const UserFeed = (props) => {
             const createdTime = createdAt.toLocaleTimeString('en-US')
             return (
                 
-                  <Col xs={4}> <img src={post[0].image} alt="post image"/></Col>
+                  <Col md={4} xs={12} > <img src={post[0].image} alt="post image"/></Col>
 
             )
         })
@@ -43,7 +43,7 @@ const UserFeed = (props) => {
                 <span className="userFeedName userName">{userName}</span>
                 </div>
               <hr/>
-    <Container style={{paddingTop: 20}}>
+    <Container style={{padding: "20px 0px 0px 0px"}}>
 <Row>
     {postMapper()}
 </Row>
