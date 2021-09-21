@@ -99,6 +99,7 @@ const PostUpdate = (props) => {
               <Label htmlFor="description">Description</Label>
               <Input
                 name="description"
+                type="textarea"
                 value={editDesc}
                 onChange={(e) => setEditDesc(e.target.value)}
               />
@@ -112,6 +113,7 @@ const PostUpdate = (props) => {
                 required
                 onChange={(e) => setEditCat(e.target.value)}
               >
+                <option value="" disabled selected>Select a Category</option>
                 <option>{AWESOME_AARDVARK}</option>
                 <option>{COOL_CAT}</option>
                 <option>{DARLING_DOGGO}</option>
