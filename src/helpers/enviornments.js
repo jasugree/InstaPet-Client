@@ -5,8 +5,8 @@ switch (window.location.hostname) {
 	case "127.0.0.01":
 		APIURL = "http://localhost:3001";
 		break;
-	case "jsg-jsg-instapet.herokuapp.com":
-		APIURL = "https://jsg-jsg-front-InstaPet.herokuapp.com";
+	case "jsg-jsg-front-instapet.herokuapp.com":
+		APIURL = "https://jsg-jsg-instapet.herokuapp.com";
 }
 
 export default APIRUL;
