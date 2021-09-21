@@ -49,6 +49,7 @@ const PostUpdate = (props) => {
   useEffect(() =>{
     setEditDesc(props.post.description)
     setEditCat(props.post.category)
+    setEditImage(props.post.image)
   },[props.post])
 
   const postUpdate = (e, post) => {
@@ -74,10 +75,9 @@ const PostUpdate = (props) => {
       .then((logData) => {
         props.fetchMine();
         props.fetchPosts();
-        console.log(logData);
         setEditDesc("");
         setEditCat("");
-        setEditImage(editImage);
+        // setEditImage(editImage);
         setEditLike(editLike);
         toggle();
         props.setPosts(logData);
@@ -94,7 +94,7 @@ const PostUpdate = (props) => {
       <Modal isOpen={modal}>
         <ModalHeader toggle={toggle}>Update Your Post</ModalHeader>
         <ModalBody>
-          <Form onSubmit={() => postUpdate(e, props.post)}>
+          <Form onSubmit={(e) => postUpdate(e, props.post)}>
             <FormGroup>
               <Label htmlFor="description">Description</Label>
               <Input
