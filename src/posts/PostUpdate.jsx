@@ -56,7 +56,7 @@ const PostUpdate = (props) => {
     e.preventDefault();
     console.log("Test, test");
 
-    fetch(`http://localhost:3001/post/update/${post.id}`, {
+    fetch(`${APIURL}/post/update/${post.id}`, {
       method: "PUT",
       body: JSON.stringify({
         post: {

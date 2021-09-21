@@ -33,7 +33,7 @@ const Search = (props) => {
   const toggle = () => setDropdownOpen((prevState) => !prevState);
 
   const handleFetch = (category) => {
-    fetch(`http://localhost:3001/post/${category}`, {
+    fetch(`${APIURL}/post/${category}`, {
       headers: new Headers({
         "Content-Type": "application/json",
         Authorization: props.token,

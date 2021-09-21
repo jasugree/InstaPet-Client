@@ -11,7 +11,7 @@ const PostIndex = (props) => {
 
 
   const fetchMine = () => {
-    fetch("http://localhost:3001/post/mine", {
+    fetch(`${APIURL}/post/mine`, {
       method: "GET",
       headers: new Headers({
         "Content-Type": "application/json",
@@ -29,7 +29,7 @@ const PostIndex = (props) => {
   }, []);
 
   const fetchPosts = () => {
-    fetch("http://localhost:3001/post", {
+    fetch(`${APIURL}/post`, {
       method: "GET",
       headers: new Headers({
         "Content-Type": "application/json",
@@ -47,7 +47,7 @@ const PostIndex = (props) => {
   }, [props.token]);
 
   const fetchUsers = () => {
-    fetch("http://localhost:3001/user", {
+    fetch(`${APIURL}/user`, {
       method: "GET",
       headers: new Headers({
         "Content-Type": "application/json",

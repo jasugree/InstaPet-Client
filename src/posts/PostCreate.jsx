@@ -45,7 +45,7 @@ const PostCreate = (props) => {
     e.preventDefault();
     console.log("Testing, testing. 1, 2, 3.");
 
-    fetch("http://localhost:3001/post/create", {
+    fetch(`${APIURL}post/create`, {
       method: "POST",
       body: JSON.stringify({
         post: {
