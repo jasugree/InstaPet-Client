@@ -28,7 +28,7 @@ const Uploading = (props) => {
   return (
     <div>
       <Container>
-        <h1>Upload Your Picture</h1>
+        <h4>Upload Your Picture</h4>
         <FormGroup>
           <input
             required
@@ -39,7 +39,7 @@ const Uploading = (props) => {
           />
           <br />
           {loading ? (
-            <h3>Loading...</h3>
+            <h5>Loading...</h5>
           ) : (
             <img src={image} style={{ width: "300px" }} />
           )}
