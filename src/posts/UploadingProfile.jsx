@@ -35,12 +35,13 @@ const UploadingProfile = (props) => {
         <FormGroup id="uploader">
         <label for="profile-image-upload" class="custom-file-upload">
           <input 
-            style={{display: "none"}}
+            style={{width: 1, height: 1,}}
             id="profile-image-upload"
             type="file"
             name="file"
             placeholder="Upload Image Here"
-            onChange={UploadImage} required
+            onChange={UploadImage} 
+            required="required" 
           />          Add your Photo
           </label>
         </FormGroup>
