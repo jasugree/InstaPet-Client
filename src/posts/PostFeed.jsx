@@ -1,105 +1,145 @@
-import React, { useReducer, useState } from 'react';
-import PostUpdate from './PostUpdate';
-
-import PostDelete from './PostDelete';
-import LikeButton from './LikeButton';
-import {Button, ButtonDropdown, DropdownItem, DropdownMenu, DropdownToggle} from "reactstrap";
+import React, { useReducer, useState } from "react";
+import PostUpdate from "./PostUpdate";
+import PostDelete from "./PostDelete";
+import LikeButton from "./LikeButton";
+import {
+  Button,
+  ButtonDropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
+} from "reactstrap";
+import Search from "./Search";
 
 const PostFeed = (props) => {
-    console.log(props.users);
-    console.log(props.posts);
-    console.log(props.token);
+  console.log(props.users);
+  console.log(props.posts);
+  console.log(props.token);
 
-    const [dropdownOpen, setOpen] = useState(false);
-    const [showUpdateModal, setShowUpdateModal]= useState(false)
-    const toggle = () => setOpen(!dropdownOpen);
+  const [dropdownOpen, setOpen] = useState(false);
+  const [showUpdateModal, setShowUpdateModal] = useState(false);
+  const toggle = () => setOpen(!dropdownOpen);
 
-    const joinArrays = (userArr, postArr) => {
-        if(!userArr || !postArr) return
-        return postArr.map(post=>[post, ...userArr.filter(u=>u.id==post.owner)])
-      }
+  const profileImage = localStorage.getItem("profileImage");
 
-      console.log(joinArrays(props.users, props.posts))
+  const joinArrays = (userArr, postArr) => {
+    if (!userArr || !postArr) return;
+    return postArr.map((post) => [
+      post,
+      ...userArr.filter((u) => u.id == post.owner),
+    ]);
+  };
 
-    const postMapper = () => {
+  console.log(joinArrays(props.users, props.posts));
 
-        if(!props.users || !props.posts) return
-        return joinArrays(props.users, props.posts).slice(0).reverse().map((post, index) =>{
+  const postMapper = () => {
+    if (!props.users || !props.posts) return;
+    return joinArrays(props.users, props.posts)
+      .sort((a, b) => a[0].id - b[0].id)
+      .reverse()
+      .map((post, index) => {
+        const createdAt = new Date(post[0].createdAt);
+        const createdDate = createdAt.toLocaleDateString("en-US");
+        const createdTime = createdAt.toLocaleTimeString([], {
+          timeStyle: "short",
+        });
 
-            const createdAt = new Date(post[0].createdAt);
-            const createdDate = createdAt.toLocaleDateString('en-US');
-            const createdTime = createdAt.toLocaleTimeString('en-US')
-            
-            return(
-
-                <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}> 
-                <tr key={index}>
-                    <div className="postContainer" style={{textAlign: 'left'}}>
-                        <div className="userHeader">
-                            <img className="userProfilePic" src={post[1].profileImage} alt="user"/>
-                            <span className="userName">{post[1].userName}</span>
-                        </div>
-                        <div className="picture">
-                            <img src={post[0].image} alt="post image" />
-                        </div>
+        return (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <tr key={index}>
+              <div className="postContainer" style={{ textAlign: "left" }}>
+                <div className="userHeader">
+                  <img
+                    className="userProfilePic"
+                    src={post[1].profileImage}
+                    alt="user"
+                  />
+                  <span className="userName">{post[1].userName}</span>
+                </div>
+                <div className="picture">
+                  <img src={post[0].image} alt="post image" />
+                </div>
+                <div className="postActions">
+                  <div className="like">
+                    <LikeButton />
+                  </div>
+                  <div
+                    className="delete"
+                    style={{
+                      display:
+                        post[1].profileImage === profileImage
+                          ? "block"
+                          : "none",
+                    }}
+                  >
+                    <PostDelete
+                      style={{ marginLeft: "auto" }}
+                      post={post[0]}
+                      token={props.token}
+                      fetchPosts={props.fetchPosts}
+                      fetchMine={props.fetchMine}
+                    />
+                  </div>
+                  <div
+                    className="edit"
+                    style={{
+                      display:
+                        post[1].profileImage === profileImage
+                          ? "block"
+                          : "none",
+                    }}
+                  >
+                    <PostUpdate
+                      post={post[0]}
+                      token={props.token}
+                      fetchPosts={props.fetchPosts}
+                      fetchMine={props.fetchMine}
+                    />
+                  </div>
+                </div>
                 <div className="postDetails">
-                    <div className="timeLike">
-                        <div className="time">
-                            {createdDate} at {createdTime}
-                        </div>
-                        <div className="likes">
-                            {post[0].likes}
-                        </div>
+                  <hr style={{ marginTop: "0em" }} />
+                  <div className="description">
+                    <span className="userName-description">
+                      {post[1].userName}
+                    </span>{" "}
+                    {post[0].description}
+                  </div>
+                  <div className="postMeta">
+                    <div className="category">{post[0].category}</div>
+                    <div className="dot">{"•"}</div>
+                    <div className="time">
+                      {createdDate} at {createdTime}
                     </div>
-                    <div className="description">
-                    <span className="userName-description">{post[1].userName}</span> {post[0].description}
-                    </div>
-                    <PostUpdate post={post[0]} token={props.token} fetchPosts={props.fetchPosts} fetchMine={props.fetchMine} />
-                    <PostDelete post={post[0]} token={props.token} fetchPosts={props.fetchPosts} fetchMine={props.fetchMine} />
-                    <div className="category">
-                        {post[0].category}
-                    </div>
-                    
-                    <ButtonDropdown isOpen={dropdownOpen} toggle={toggle}>
-                        <DropdownToggle> ... </DropdownToggle>
-                    <DropdownMenu> 
-                    <DropdownItem color="" size="sm" onClick={()=>{
-                        setShowUpdateModal(true)}}>
-        
-        Update Your Post
-      </DropdownItem>
-
-
-                    
-
-                    {/* <DropdownItem>
-                    <PostDelete post={post[0]} token={props.token} fetchPosts={props.fetchPosts} />
-                </DropdownItem> */}
-                    </DropdownMenu>
-                    </ButtonDropdown>
-
-                    <div>
-                    <LikeButton/>
-                    </div>
-
-                
-                <PostUpdate post={post[0]} token={props.token} fetchPosts={props.fetchPosts} modal={showUpdateModal} setModal={setShowUpdateModal} /> 
-                    
+                  </div>
                 </div>
-                </div>
-                </tr>
-                </div>
-        )
-        })
-    }
+              </div>
+            </tr>
+          </div>
+        );
+      });
+  };
 
+  return (
+    <div>
+      <div className="filter">
+        <Search
+          style={{ maxWidth: 200 }}
+          token={props.token}
+          fetchPosts={props.fetchPosts}
+          fetchMine={props.fetchMine}
+          setPosts={props.setPosts}
+        />
+      </div>
+      {postMapper()}
+    </div>
+  );
+};
 
-
-    return ( 
-        <div>
-            {postMapper()}
-        </div>
-     );
-}
- 
 export default PostFeed;

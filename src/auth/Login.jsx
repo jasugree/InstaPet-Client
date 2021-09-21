@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
 import BrandLogo from "../InstaPet-logo.svg";
 
@@ -7,6 +7,8 @@ const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [toggle, setToggle] = useState(true);
+
+  let history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,8 +22,12 @@ const Login = (props) => {
     })
       .then((response) => response.json())
       .then((data) => {
+        history.push("/home");
+        console.log("RIGH HERE");
+        console.log(data);
         props.updateToken(data.sessionToken);
-        localStorage.setItem("profileImage",data.user.profileImage)
+        localStorage.setItem("profileImage", data.user.profileImage);
+        localStorage.setItem("userName", data.user.userName);
       }); //ADD CATCH
   };
 

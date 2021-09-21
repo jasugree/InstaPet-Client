@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Button,
   Form,
@@ -33,25 +33,30 @@ import {
 } from "./category.constants.js";
 import Uploading from "./Uploading";
 
+let e;
 const PostUpdate = (props) => {
   const [editImage, setEditImage] = useState(props.post.image);
   const [editDesc, setEditDesc] = useState(props.post.description);
   const [editCat, setEditCat] = useState(props.post.category);
   const [editLike, setEditLike] = useState(props.post.like);
-  // const [modal, setModal] = useState(false);
- const {modal, setModal} = props
+  const [modal, setModal] = useState(props.modal);
+  //  const {modal, setModal} = props
   const toggle = () => {
     setModal(!modal);
-    debugger
-  }
+  };
   console.log("hello!!");
   console.log(props.post);
+
+  useEffect(() => {
+    setEditDesc(props.post.description);
+    setEditCat(props.post.category);
+  }, [props.post]);
 
   const postUpdate = (e, post) => {
     e.preventDefault();
     console.log("Test, test");
 
-    fetch(`http://localhost:3001/post/update/${props.post.id}`, {
+    fetch(`http://localhost:3001/post/update/${post.id}`, {
       method: "PUT",
       body: JSON.stringify({
         post: {
@@ -68,14 +73,14 @@ const PostUpdate = (props) => {
     })
       .then((res) => res.json())
       .then((logData) => {
+        props.fetchMine();
+        props.fetchPosts();
         console.log(logData);
         setEditDesc("");
         setEditCat("");
         setEditImage(editImage);
         setEditLike(editLike);
         toggle();
-        props.fetchPosts();
-        props.fetchMine();
         props.setPosts(logData);
       })
       .catch((error) => {
@@ -84,11 +89,23 @@ const PostUpdate = (props) => {
   };
   return (
     <div>
-
+      <Button
+        style={{
+          color: "#0086c3",
+          backgroundColor: "transparent",
+          border: 0,
+          fontSize: 24,
+          padding: 0,
+        }}
+        size="sm"
+        onClick={toggle}
+      >
+        <i class="far fa-edit"></i>
+      </Button>
       <Modal isOpen={modal}>
         <ModalHeader toggle={toggle}>Update Your Post</ModalHeader>
         <ModalBody>
-          <Form onSubmit={postUpdate}>
+          <Form onSubmit={() => postUpdate(e, props.post)}>
             <FormGroup>
               <Label htmlFor="description">Description</Label>
               <Input
@@ -128,7 +145,12 @@ const PostUpdate = (props) => {
               </Input>
             </FormGroup>
 
-            <Button type="submit">Update</Button>
+            <Button
+              style={{ color: "white", backgroundColor: "#0086c3" }}
+              type="submit"
+            >
+              Update
+            </Button>
           </Form>
         </ModalBody>
       </Modal>

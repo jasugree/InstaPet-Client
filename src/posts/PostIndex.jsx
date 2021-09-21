@@ -9,7 +9,6 @@ const PostIndex = (props) => {
   const [users, setUsers] = useState(null);
   const [mine, setMine] = useState(null);
 
-
   const fetchMine = () => {
     fetch("http://localhost:3001/post/mine", {
       method: "GET",
@@ -68,7 +67,6 @@ const PostIndex = (props) => {
   console.log(users);
   return (
     <div>
-
       <Sitebar
         token={props.token}
         fetchPosts={fetchPosts}
