@@ -375,12 +375,52 @@ div.nameAndProfile {
 .dot {
 	margin: auto 5px;
 }
-.col-4 {
+.col-md-4 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	height: 350px;
 	margin-bottom: 25px;
 }
-.col-4 img {
-	height: 270px;
+
+.col-md-4 img {
+	flex-shrink: 0;
+	min-width: 100%;
+	min-height: 100%;
 	object-fit: cover;
-	border-top: 5px solid #ffffff;
-	border-bottom: 5px solid #ffffff;
+}
+select option:disabled {
+	color: lightgray;
+}
+
+input[type="file"]::file-selector-button {
+	border: none;
+	background-color: #0086c3;
+	color: #0086c3;
+}
+
+@media only screen and (max-width: 767px) {
+	.nameAndProfile {
+		padding: 0px !important;
+	}
+	img.userFeedProfilePic {
+		margin: auto;
+		display: block;
+		width: 150px;
+		height: 150px;
+		margin-top: 25px;
+	}
+	.userFeedName {
+		padding: 0px;
+		font-size: 25px;
+		text-align: center;
+		margin: auto;
+		display: block;
+		margin-top: 25px;
+	}
+	.col-12 img {
+		height: 350px;
+		max-height: 350px;
+	}
 }

@@ -103,9 +103,12 @@ const PostCreate = (props) => {
             <FormGroup>
               <Label htmlFor="description">Description</Label>
               <Input
+                type="textarea"
+                placeholder="Add a description to your post..."
                 name="description"
                 value={description}
                 required
+                
                 onChange={(e) => setDescription(e.target.value)}
               />
             </FormGroup>
@@ -118,7 +121,7 @@ const PostCreate = (props) => {
                 required
                 onChange={(e) => setCategory(e.target.value)}
               >
-                <option></option>
+                <option value="" disabled selected>Select a Category</option>
                 <option>{AWESOME_AARDVARK}</option>
                 <option>{COOL_CAT}</option>
                 <option>{DARLING_DOGGO}</option>
