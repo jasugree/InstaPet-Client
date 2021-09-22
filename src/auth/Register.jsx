@@ -9,6 +9,7 @@ import {
 } from "reactstrap";
 import UploadingProfile from "../posts/UploadingProfile";
 import BrandLogo from "../InstaPet-logo.svg"
+import APIURL from "../helpers/enviornments";
 
 const Register = (props) => {
   const [email, setEmail] = useState("");
@@ -23,7 +24,7 @@ const Register = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("hey there brother");
-    fetch("http://localhost:3001/user/create", {
+    fetch(`${APIURL}/user/create`, {
       //1
       method: "POST",
       body: JSON.stringify({

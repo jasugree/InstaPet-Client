@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import APIURL from "../helpers/enviornments";
 import BrandLogo from "../InstaPet-logo.svg";
 
 const Login = (props) => {
@@ -12,7 +13,7 @@ const Login = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch("http://localhost:3001/user/login", {
+    fetch(`${APIURL}/user/login`, {
       //1
       method: "POST",
       body: JSON.stringify({ user: { email: email, password: password } }),
