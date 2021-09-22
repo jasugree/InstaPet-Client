@@ -3,8 +3,7 @@ import {
   Button,
   Modal,
   ModalHeader,
-  ModalBody,
-  DropdownItem,
+  ModalBody
 } from "reactstrap";
 import APIRUL from "../helpers/enviornments";
 
@@ -39,7 +38,7 @@ const PostDelete = (props) => {
         size="sm"
         onClick={toggle}
       >
-        <i class="far fa-trash-alt"></i>
+        <i className="far fa-trash-alt"></i>
       </Button>
       <Modal centered isOpen={modal}>
         <ModalHeader toggle={toggle}>Are you sure you want to delete this post?</ModalHeader>
@@ -54,7 +53,6 @@ const PostDelete = (props) => {
               backgroundColor: "#0086c3",
               borderRadius: 100,
               fontWeight: "bold",
-              backgroundColor: "red",
               border: "none",
               width: "100%"
             }}

@@ -7,8 +7,7 @@ import {
   Label,
   Input,
   ModalBody,
-  ModalHeader,
-  DropdownItem,
+  ModalHeader
 } from "reactstrap";
 import APIRUL from "../helpers/enviornments.js";
 import {
@@ -32,8 +31,7 @@ import {
   TUBULAR_TURTLE,
   ZESTY_ZEBRA,
 } from "./category.constants.js";
-import Uploading from "./Uploading";
-let e
+
 const PostUpdate = (props) => {
   const [editImage, setEditImage] = useState(props.post.image);
   const [editDesc, setEditDesc] = useState(props.post.description);
@@ -44,9 +42,6 @@ const PostUpdate = (props) => {
   const toggle = () => {
     setModal(!modal);
   }
-  console.log("hello!!");
-  console.log(props.post);
-
   useEffect(() =>{
     setEditDesc(props.post.description)
     setEditCat(props.post.category)
@@ -55,7 +50,6 @@ const PostUpdate = (props) => {
 
   const postUpdate = (e, post) => {
     e.preventDefault();
-    console.log("Test, test");
 
     fetch(`${APIRUL}/post/update/${post.id}`, {
       method: "PUT",
@@ -90,7 +84,7 @@ const PostUpdate = (props) => {
   return (
     <div>
         <Button style={{color: "#0086c3", backgroundColor: "transparent", border: 0, fontSize: 24, padding: 0}} size="sm" onClick={toggle}>
-        <i class="far fa-edit"></i>
+        <i className="far fa-edit"></i>
         </Button>
       <Modal centered isOpen={modal}>
         <ModalHeader toggle={toggle}>Update Your Post</ModalHeader>
@@ -115,7 +109,7 @@ const PostUpdate = (props) => {
                 required
                 onChange={(e) => setEditCat(e.target.value)}
               >
-                <option value="" disabled selected>Select a Category</option>
+                <option value="" disabled defaultValue>Select a Category</option>
                 <option>{AWESOME_AARDVARK}</option>
                 <option>{COOL_CAT}</option>
                 <option>{DARLING_DOGGO}</option>

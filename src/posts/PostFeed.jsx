@@ -1,27 +1,22 @@
-import React, { useReducer, useState } from 'react';
+import React from 'react';
 import PostUpdate from './PostUpdate';
 import PostDelete from './PostDelete';
 import LikeButton from './LikeButton';
-import {Button, ButtonDropdown, DropdownItem, DropdownMenu, DropdownToggle} from "reactstrap";
 import Search from './Search';
 
 const PostFeed = (props) => {
-    console.log(props.users);
-    console.log(props.posts);
-    console.log(props.token);
-
-    const [dropdownOpen, setOpen] = useState(false);
-    const [showUpdateModal, setShowUpdateModal]= useState(false)
-    const toggle = () => setOpen(!dropdownOpen);
+    // const [dropdownOpen, setOpen] = useState(false);
+    // const [showUpdateModal, setShowUpdateModal]= useState(false)
+    // const toggle = () => setOpen(!dropdownOpen);
 
     const profileImage = localStorage.getItem('profileImage');
 
     const joinArrays = (userArr, postArr) => {
         if(!userArr || !postArr) return
-        return postArr.map(post=>[post, ...userArr.filter(u=>u.id==post.owner)])
+        return postArr.map(post=>[post, ...userArr.filter(u=>u.id===post.owner)])
       }
 
-      console.log(joinArrays(props.users, props.posts))
+      
 
     const postMapper = () => {
         if(!props.users || !props.posts) return
@@ -36,15 +31,15 @@ const PostFeed = (props) => {
             
             return(
 
-                <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}> 
-                <tr key={index}>
+                <div key={index} style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}> 
+                
                     <div className="postContainer" style={{textAlign: 'left'}}>
                         <div className="userHeader">
                             <img className="userProfilePic" src={post[1].profileImage} alt="user"/>
                             <span className="userName">{post[1].userName}</span>
                         </div>
                         <div className="picture">
-                            <img src={post[0].image} alt="post image" />
+                            <img src={post[0].image} alt="rendered-post" />
                         </div>
                 <div className="postActions">
                     <div className="like">
@@ -75,7 +70,7 @@ const PostFeed = (props) => {
                     </div> 
                 </div>   
                 </div>
-                </tr>
+                
                 </div>
         )
         })

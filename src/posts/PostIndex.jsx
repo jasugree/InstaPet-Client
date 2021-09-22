@@ -4,7 +4,7 @@ import Sitebar from "../navbar/Navbar";
 
 const PostIndex = (props) => {
   // const [updateActive, setUpdateActive] = useState(false);
-  const [postToUpdate, setPostToUpdate] = useState({});
+  // const [postToUpdate, setPostToUpdate] = useState({});
 
   const [posts, setPosts] = useState(null);
   const [users, setUsers] = useState(null);
@@ -65,8 +65,6 @@ const PostIndex = (props) => {
     fetchUsers();
   }, []);
 
-  console.log(posts);
-  console.log(users);
   return (
     <div>
 

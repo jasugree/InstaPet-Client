@@ -44,8 +44,6 @@ const PostCreate = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Testing, testing. 1, 2, 3.");
-
     fetch(`${APIRUL}/post/create`, {
       method: "POST",
       body: JSON.stringify({
@@ -63,7 +61,6 @@ const PostCreate = (props) => {
     })
       .then((res) => res.json())
       .then((logData) => {
-        console.log(logData);
         setImage("");
         setDescription("");
         setCategory("");
@@ -123,7 +120,7 @@ const PostCreate = (props) => {
                 required
                 onChange={(e) => setCategory(e.target.value)}
               >
-                <option value="" disabled selected>Select a Category</option>
+                <option value="" disabled defaultValue>Select a Category</option>
                 <option>{AWESOME_AARDVARK}</option>
                 <option>{COOL_CAT}</option>
                 <option>{DARLING_DOGGO}</option>

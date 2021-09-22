@@ -19,12 +19,9 @@ import PostCreate from "../posts/PostCreate";
 import BrandLogo from "../InstaPet-logo.svg"
 import UserFeed from "../posts/UserFeed";
 import PostFeed from "../posts/PostFeed";
-import Search from "../posts/Search";
-
 
 const Sitebar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-  console.log(props);
   const toggle = () => {
     let newIsOpen = !isOpen;
     setIsOpen(newIsOpen);

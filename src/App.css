@@ -41,6 +41,7 @@ p {
 	}
 }
 .App {
+	background-position: center !important;
 	background-size: cover !important;
 }
 /* JAKE'S BASE STYLING */
@@ -91,6 +92,7 @@ p {
 	transition: background-color 0.25s ease;
 }
 #delete-button {
+	background-color: red !important;
 	color: white;
 	width: 100%;
 	border: none;
@@ -191,7 +193,6 @@ html * {
 
 body {
 	background-size: cover;
-	background-position: center;
 	background: #dbf9ff !important;
 }
 
@@ -312,7 +313,6 @@ button.UserFeed.btn.btn-secondary {
 	border-radius: 50%;
 	background-position: center;
 	background-size: cover;
-	background-size: 100%;
 	padding: 20px;
 	margin: 5px;
 }

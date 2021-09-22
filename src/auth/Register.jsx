@@ -4,7 +4,6 @@ import {
   Button,
   Form,
   FormGroup,
-  Label,
   Input
 } from "reactstrap";
 import UploadingProfile from "../posts/UploadingProfile";
@@ -23,7 +22,6 @@ const Register = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("hey there brother");
     fetch(`${APIURL}/user/create`, {
       //1
       method: "POST",
@@ -54,7 +52,7 @@ const Register = (props) => {
   return (
     <div className="wrapper">
     <div className="login-register">
-      <img src={BrandLogo} alt="logo" class="auth-logo" style={{width: 300, margin: "auto"}} />
+      <img src={BrandLogo} alt="logo" className="auth-logo" style={{width: 300, margin: "auto"}} />
       <p className="register-intro">Sign up to see photos from your friends and their pets.</p>
       <Form onSubmit={handleSubmit}>
         <FormGroup>

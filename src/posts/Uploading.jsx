@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Container, FormGroup } from "reactstrap";
+import React, { useState } from "react";
+import { FormGroup } from "reactstrap";
 import PlaceholderImage from "../placeholder-post.jpg"
 
 const Uploading = (props) => {
@@ -21,16 +21,15 @@ const Uploading = (props) => {
     );
     const File = await res.json();
 
-    console.log(File.secure_url);
     setImage(File.secure_url);
     setLoading(false);
   };
 
   return (
     <div className="post-pic">
-        <img id="post-pic" src={ image == "" ? (PlaceholderImage) :(image)} alt="" />
+        <img id="post-pic" src={ image === "" ? (PlaceholderImage) :(image)} alt="" />
         <FormGroup id="uploader">
-        <label for="profile-image-upload" class="custom-file-upload">
+        <label for="profile-image-upload" className="custom-file-upload">
           <input
             style={{width: 1, height: 1,}}
             id="profile-image-upload"

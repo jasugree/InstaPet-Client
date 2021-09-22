@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Dropdown,
   DropdownToggle,
@@ -42,7 +42,6 @@ const Search = (props) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         props.setPosts(data);
       });
   };

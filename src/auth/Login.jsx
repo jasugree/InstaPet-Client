@@ -28,8 +28,6 @@ const Login = (props) => {
           return
         }
         history.push("/home");
-        console.log("RIGH HERE")
-        console.log(data)
         props.updateToken(data.sessionToken);
         localStorage.setItem("profileImage",data.user.profileImage)
         localStorage.setItem("userName",data.user.userName)
@@ -42,7 +40,7 @@ const Login = (props) => {
         <img
           src={BrandLogo}
           alt="logo"
-          class="auth-logo"
+          className="auth-logo"
           style={{ width: 300, margin: "auto" }}
         />
         <Form onSubmit={handleSubmit}>
@@ -63,11 +61,11 @@ const Login = (props) => {
               name="password"
               value={password}
               required
-              type={toggle == true ? "password" : "text"}
+              type={toggle === true ? "password" : "text"}
             />
             <i
               className={
-                toggle == true
+                toggle === true
                   ? "far fa-eye password-icon"
                   : "far fa-eye-slash password-icon"
               }

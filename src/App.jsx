@@ -3,7 +3,6 @@ import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
 import PostIndex from "./posts/PostIndex";
 import Auth from "./auth/Auth";
-import LikeButton from "./posts/LikeButton";
 import background from "../src/InstaPet-background.svg"
 
 
@@ -19,7 +18,6 @@ function App() {
   const updateToken = (newToken) => {
     localStorage.setItem("token", newToken);
     setSessionToken(newToken);
-    console.log("This is the session token ====>" + sessionToken);
   };
 
   const clearToken = () => {
@@ -36,7 +34,7 @@ function App() {
   };
 
   return (
-    <div className="App" style={{background: sessionToken ? '#dbf9ff' : `url(${background})`, backgroundSize: 'cover', backgroundPosition: "center" }}>
+    <div className="App" style={{background: sessionToken ? '#dbf9ff' : `url(${background})`}}>
       {protectedViews()}
     </div>
   );
