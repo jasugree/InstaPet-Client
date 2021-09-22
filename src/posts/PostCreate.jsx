@@ -94,9 +94,9 @@ const PostCreate = (props) => {
         <i className="fas fa-plus-square"></i>
       </Button>
 
-      <Modal isOpen={modal}>
+      <Modal centered isOpen={modal}>
         <ModalHeader toggle={toggle}>Share Your Pet</ModalHeader>
-        <ModalBody>
+        <ModalBody className="create-modal">
           <Form onSubmit={handleSubmit}>
             <FormGroup>
               <Uploading setImage={setImage} image={image} />
@@ -105,6 +105,7 @@ const PostCreate = (props) => {
               <Label htmlFor="description">Description</Label>
               <Input
                 type="textarea"
+                rows="5"
                 placeholder="Add a description to your post..."
                 name="description"
                 value={description}
@@ -144,12 +145,7 @@ const PostCreate = (props) => {
                 <option>{ZESTY_ZEBRA}</option>
               </Input>
             </FormGroup>
-            <Button
-              style={{
-                color: "white",
-                backgroundColor: "#0086c3",
-                borderRadius: 100,
-              }}
+            <Button id="create-button"
               type="post"
             >
               Post

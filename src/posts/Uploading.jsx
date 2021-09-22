@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, FormGroup } from "reactstrap";
+import PlaceholderImage from "../placeholder-post.jpg"
 
 const Uploading = (props) => {
   const { setImage, image } = props;
@@ -26,25 +27,26 @@ const Uploading = (props) => {
   };
 
   return (
-    <div>
-      <Container>
-        <h4>Upload Your Picture</h4>
-        <FormGroup>
+    <div className="post-pic">
+        <img id="post-pic" src={ image == "" ? (PlaceholderImage) :(image)} alt="" />
+        <FormGroup id="uploader">
+        <label for="profile-image-upload" class="custom-file-upload">
           <input
-            required
+            style={{width: 1, height: 1,}}
+            id="profile-image-upload"
             type="file"
             name="file"
             placeholder="Upload Image Here"
-            onChange={UploadImage}
-          />
-          <br />
+            onChange={UploadImage} 
+            required="required"
+          /> Add your Photo
+          </label>
           {loading ? (
             <h5>Loading...</h5>
           ) : (
-            <img src={image} style={{ width: "300px" }} />
+            null
           )}
         </FormGroup>
-      </Container>
     </div>
   );
 };

@@ -92,7 +92,7 @@ const PostUpdate = (props) => {
         <Button style={{color: "#0086c3", backgroundColor: "transparent", border: 0, fontSize: 24, padding: 0}} size="sm" onClick={toggle}>
         <i class="far fa-edit"></i>
         </Button>
-      <Modal isOpen={modal}>
+      <Modal centered isOpen={modal}>
         <ModalHeader toggle={toggle}>Update Your Post</ModalHeader>
         <ModalBody>
           <Form onSubmit={(e) => postUpdate(e, props.post)}>
@@ -101,6 +101,7 @@ const PostUpdate = (props) => {
               <Input
                 name="description"
                 type="textarea"
+                rows="5"
                 value={editDesc}
                 onChange={(e) => setEditDesc(e.target.value)}
               />
@@ -137,7 +138,7 @@ const PostUpdate = (props) => {
               </Input>
             </FormGroup>
 
-            <Button style={{color: 'white', backgroundColor: '#0086c3'}} type="submit">Update</Button>
+            <Button id="update-button" style={{color: 'white', backgroundColor: '#0086c3'}} type="submit">Update</Button>
           </Form>
         </ModalBody>
       </Modal>

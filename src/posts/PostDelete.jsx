@@ -41,18 +41,24 @@ const PostDelete = (props) => {
       >
         <i class="far fa-trash-alt"></i>
       </Button>
-      <Modal isOpen={modal}>
-        <ModalHeader toggle={toggle}>Delete Your Post</ModalHeader>
+      <Modal centered isOpen={modal}>
+        <ModalHeader toggle={toggle}>Are you sure you want to delete this post?</ModalHeader>
         <ModalBody>
-          <Button
+          <Button id="delete-button"
             style={{
+              display: "flex",
+              justifyContent: "center",
+              marginLeft: "auto",
+              marginRight: "auto",
               color: "white",
               backgroundColor: "#0086c3",
               borderRadius: 100,
               fontWeight: "bold",
               backgroundColor: "red",
+              border: "none",
+              width: "100%"
             }}
-            onClick={deletePost}
+            onClick={deletePost} 
           >
             Delete
           </Button>
