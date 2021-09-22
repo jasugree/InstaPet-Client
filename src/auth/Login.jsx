@@ -23,6 +23,10 @@ const Login = (props) => {
     })
       .then((response) => response.json())
       .then((data) => {
+        if(!data.sessionToken){
+          alert("Something went wrong. Please try again.")
+          return
+        }
         history.push("/home");
         console.log("RIGH HERE")
         console.log(data)
