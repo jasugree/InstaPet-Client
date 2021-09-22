@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import APIURL from "../helpers/enviornments";
 import Sitebar from "../navbar/Navbar";
 
 const PostIndex = (props) => {

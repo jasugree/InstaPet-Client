@@ -7,6 +7,8 @@ switch (window.location.hostname) {
 		break;
 	case "jsg-jsg-front-instapet.herokuapp.com":
 		APIURL = "https://jsg-jsg-instapet.herokuapp.com";
+	default:
+		APIURL = "https://jsg-jsg-instapet.herokuapp.com";
 }
 
-export default APIRUL;
+export default APIURL;

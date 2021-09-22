@@ -31,6 +31,7 @@ import {
   TUBULAR_TURTLE,
   ZESTY_ZEBRA,
 } from "./category.constants.js";
+import APIRUL from "../helpers/enviornments";
 
 const PostCreate = (props) => {
   const [image, setImage] = useState("");
@@ -45,7 +46,7 @@ const PostCreate = (props) => {
     e.preventDefault();
     console.log("Testing, testing. 1, 2, 3.");
 
-    fetch(`${APIURL}/post/create`, {
+    fetch(`${APIRUL}/post/create`, {
       method: "POST",
       body: JSON.stringify({
         post: {

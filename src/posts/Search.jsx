@@ -5,6 +5,7 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
+import APIRUL from "../helpers/enviornments";
 import {
   AWESOME_AARDVARK,
   COOL_CAT,
@@ -33,7 +34,7 @@ const Search = (props) => {
   const toggle = () => setDropdownOpen((prevState) => !prevState);
 
   const handleFetch = (category) => {
-    fetch(`${APIURL}/post/${category}`, {
+    fetch(`${APIRUL}/post/${category}`, {
       headers: new Headers({
         "Content-Type": "application/json",
         Authorization: props.token,

@@ -6,13 +6,14 @@ import {
   ModalBody,
   DropdownItem,
 } from "reactstrap";
+import APIRUL from "../helpers/enviornments";
 
 const PostDelete = (props) => {
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
 
   const deletePost = (posts) => {
-    fetch(`${APIURL}/post/delete/${props.post.id}`, {
+    fetch(`${APIRUL}/post/delete/${props.post.id}`, {
       method: "DELETE",
       headers: new Headers({
         "Content-Type": "application/json",

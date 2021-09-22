@@ -10,6 +10,7 @@ import {
   ModalHeader,
   DropdownItem,
 } from "reactstrap";
+import APIRUL from "../helpers/enviornments.js";
 import {
   AWESOME_AARDVARK,
   COOL_CAT,
@@ -56,7 +57,7 @@ const PostUpdate = (props) => {
     e.preventDefault();
     console.log("Test, test");
 
-    fetch(`${APIURL}/post/update/${post.id}`, {
+    fetch(`${APIRUL}/post/update/${post.id}`, {
       method: "PUT",
       body: JSON.stringify({
         post: {
