@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Button,
   Form,
@@ -43,7 +43,6 @@ const PostCreate = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Testing, testing. 1, 2, 3.");
 
     fetch("http://localhost:3001/post/create", {
       method: "POST",
@@ -62,7 +61,6 @@ const PostCreate = (props) => {
     })
       .then((res) => res.json())
       .then((logData) => {
-        console.log(logData);
         setImage("");
         setDescription("");
         setCategory("");
@@ -108,7 +106,6 @@ const PostCreate = (props) => {
                 name="description"
                 value={description}
                 required
-                
                 onChange={(e) => setDescription(e.target.value)}
               />
             </FormGroup>
@@ -121,7 +118,9 @@ const PostCreate = (props) => {
                 required
                 onChange={(e) => setCategory(e.target.value)}
               >
-                <option value="" disabled selected>Select a Category</option>
+                <option value="" disabled selected>
+                  Select a Category
+                </option>
                 <option>{AWESOME_AARDVARK}</option>
                 <option>{COOL_CAT}</option>
                 <option>{DARLING_DOGGO}</option>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Dropdown,
   DropdownToggle,
@@ -41,7 +41,6 @@ const Search = (props) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         props.setPosts(data);
       });
   };
@@ -49,24 +48,26 @@ const Search = (props) => {
   return (
     <div className="search-dropdown">
       <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-        <DropdownToggle id="search-button" caret>Search by Category</DropdownToggle>
+        <DropdownToggle id="search-button" caret>
+          Search by Category
+        </DropdownToggle>
         <DropdownMenu
-        modifiers={{
-          setMaxHeight: {
-            enabled: true,
-            order: 890,
-            fn: (data) => {
-              return {
-                ...data,
-                styles: {
-                  ...data.styles,
-                  overflow: 'auto',
-                  maxHeight: '200px'
-                },
-              };
+          modifiers={{
+            setMaxHeight: {
+              enabled: true,
+              order: 890,
+              fn: (data) => {
+                return {
+                  ...data,
+                  styles: {
+                    ...data.styles,
+                    overflow: "auto",
+                    maxHeight: "200px",
+                  },
+                };
+              },
             },
-          },
-        }}
+          }}
         >
           <DropdownItem onClick={() => handleFetch(AWESOME_AARDVARK)}>
             {AWESOME_AARDVARK}

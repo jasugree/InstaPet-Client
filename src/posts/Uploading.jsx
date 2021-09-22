@@ -20,7 +20,6 @@ const Uploading = (props) => {
     );
     const File = await res.json();
 
-    console.log(File.secure_url);
     setImage(File.secure_url);
     setLoading(false);
   };

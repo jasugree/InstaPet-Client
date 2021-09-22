@@ -2,13 +2,9 @@ import React, { useState, useEffect } from "react";
 import Sitebar from "../navbar/Navbar";
 
 const PostIndex = (props) => {
-  // const [updateActive, setUpdateActive] = useState(false);
-  const [postToUpdate, setPostToUpdate] = useState({});
-
   const [posts, setPosts] = useState(null);
   const [users, setUsers] = useState(null);
   const [mine, setMine] = useState(null);
-
 
   const fetchMine = () => {
     fetch("http://localhost:3001/post/mine", {
@@ -21,6 +17,9 @@ const PostIndex = (props) => {
       .then((res) => res.json())
       .then((feedData) => {
         setMine(feedData);
+      })
+      .catch((error) => {
+        console.log("Error", error);
       });
   };
 
@@ -64,11 +63,8 @@ const PostIndex = (props) => {
     fetchUsers();
   }, []);
 
-  console.log(posts);
-  console.log(users);
   return (
     <div>
-
       <Sitebar
         token={props.token}
         fetchPosts={fetchPosts}

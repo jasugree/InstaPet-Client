@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-import {
-  Button,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  DropdownItem,
-} from "reactstrap";
+import { Button, Modal, ModalHeader, ModalBody } from "reactstrap";
 
 const PostDelete = (props) => {
   const [modal, setModal] = useState(false);
@@ -18,11 +12,15 @@ const PostDelete = (props) => {
         "Content-Type": "application/json",
         Authorization: props.token,
       }),
-    }).then(() => {
-      props.fetchPosts();
-      props.fetchMine();
-      toggle();
-    });
+    })
+      .then(() => {
+        props.fetchPosts();
+        props.fetchMine();
+        toggle();
+      })
+      .catch((error) => {
+        console.log("Error", error);
+      });
   };
 
   return (
