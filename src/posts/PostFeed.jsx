@@ -28,7 +28,7 @@ const PostFeed = (props) => {
             const createdAt = new Date(post[0].createdAt);
             const createdDate = createdAt.toLocaleDateString('en-US');
             const createdTime = createdAt.toLocaleTimeString([], {timeStyle: 'short'})
-            
+
             return(
 
                 <div key={index} style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}> 

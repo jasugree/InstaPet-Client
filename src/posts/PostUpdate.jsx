@@ -72,13 +72,14 @@ const PostUpdate = (props) => {
         props.fetchPosts();
         setEditDesc("");
         setEditCat("");
-        // setEditImage(editImage);
         setEditLike(editLike);
         toggle();
-        props.setPosts(logData);
+        // props.setPosts(logData);
       })
       .catch((error) => {
         console.log("Error", error);
+        alert("Something went wrong. Please try again.")
+        return        
       });
   };
   return (

@@ -45,6 +45,11 @@ const Register = (props) => {
         props.updateToken(data.sessionToken);
         localStorage.setItem("profileImage", profileImage)
         localStorage.setItem("userName", userName)
+      })
+      .catch((error) => {
+        console.log("Error", error);
+        alert("Something went wrong. Please try again.")
+        return
       });
   };
 

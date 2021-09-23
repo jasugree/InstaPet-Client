@@ -22,6 +22,11 @@ const PostIndex = (props) => {
       .then((res) => res.json())
       .then((feedData) => {
         setMine(feedData);
+      })
+      .catch((error) => {
+        console.log("Error", error);
+        alert("Something went wrong. Please try again.")
+        return
       });
   };
 
@@ -40,6 +45,11 @@ const PostIndex = (props) => {
       .then((res) => res.json())
       .then((feedData) => {
         setPosts(feedData);
+      })
+      .catch((error) => {
+        console.log("Error", error);
+        alert("Something went wrong. Please try again.")
+        return
       });
   };
 
@@ -58,6 +68,11 @@ const PostIndex = (props) => {
       .then((res) => res.json())
       .then((UserData) => {
         setUsers(UserData);
+      })
+      .catch((error) => {
+        console.log("Error", error);
+        alert("Something went wrong. Please try again.")
+        return
       });
   };
 

@@ -24,14 +24,19 @@ const Login = (props) => {
       .then((response) => response.json())
       .then((data) => {
         if(!data.sessionToken){
-          alert("Something went wrong. Please try again.")
+          alert("Username or Password is incorrect. Please try again.")
           return
         }
         history.push("/home");
         props.updateToken(data.sessionToken);
         localStorage.setItem("profileImage",data.user.profileImage)
         localStorage.setItem("userName",data.user.userName)
-      }); //ADD CATCH
+      })
+      .catch((error) => {
+        console.log("Error", error);
+        alert("Something went wrong. Please try again.")
+        return
+      });
   };
 
   return (

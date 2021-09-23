@@ -60,7 +60,7 @@ const Sitebar = (props) => {
           <Col>
            <Switch>
            <Route exact path="/home"><PostFeed  posts={props.posts} fetchUsers={props.fetchUsers} users={props.users} fetchMine={props.fetchMine} fetchPosts={props.fetchPosts} setPosts={props.setPosts} token={props.token} /></Route>
-           <Route exact path="/post/mine"><UserFeed fetchMine={props.fetchMine} mine={props.mine} posts={props.posts} fetchUsers={props.fetchUsers} users={props.users} fetchPosts={props.fetchPosts} token={props.token} /></Route>
+           <Route exact path="/post/mine"><UserFeed fetchMine={props.fetchMine} mine={props.mine} posts={props.posts} fetchUsers={props.fetchUsers} users={props.users} setPosts={props.setPosts} fetchPosts={props.fetchPosts} token={props.token} /></Route>
            </Switch>
           </Col>
         </Row>

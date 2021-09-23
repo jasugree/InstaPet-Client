@@ -23,7 +23,7 @@ const UserFeed = (props) => {
         return joinArrays(props.users, props.mine).slice(0).reverse().map((post, index) => {
             return (
                 
-                  <Col md={4} xs={12} > <img src={post[0].image} alt="render-post"/></Col>
+                  <Col md={4} xs={12} key={index}> <img src={post[0].image} alt="render-post"/></Col>
 
             )
         })

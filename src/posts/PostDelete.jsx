@@ -22,6 +22,11 @@ const PostDelete = (props) => {
       props.fetchPosts();
       props.fetchMine();
       toggle();
+    })
+    .catch((error) => {
+      console.log("Error", error);
+      alert("Something went wrong. Please try again.")
+      return
     });
   };
 

@@ -72,6 +72,8 @@ const PostCreate = (props) => {
       })
       .catch((error) => {
         console.log("Error", error);
+        alert("Something went wrong. Please try again.")
+        return
       });
   };
 

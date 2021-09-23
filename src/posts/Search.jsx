@@ -43,6 +43,11 @@ const Search = (props) => {
       .then((res) => res.json())
       .then((data) => {
         props.setPosts(data);
+      })
+      .catch((error) => {
+        console.log("Error", error);
+        alert("Something went wrong. Please try again.")
+        return
       });
   };
 
